@@ -97,6 +97,9 @@ void Board::extendCritterSlots(){
         newSlots[i] =  critters[i];
     }
 
+    delete [] critters; // Free the array.
+
+
     critters = newSlots;
 }
 
