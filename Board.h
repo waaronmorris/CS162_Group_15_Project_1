@@ -17,12 +17,13 @@ class Board {
 private:
     int rows;
     int columns;
-    int critterCount;
+    int critterCount=0;
 
     Space ***spaces;
     Critter **critters;
 
 public:
+    void createCritter();
     int getRows() const;
     int getColumns() const;
     void setBoard(int r, int c);
@@ -30,6 +31,8 @@ public:
     void ~Board();
     void printBoard();
     void runBoard();
+    void createCritter(std::string type, int x, int y);
+    void extendCritterSlots();
 
 };
 

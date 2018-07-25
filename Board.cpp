@@ -7,6 +7,7 @@
 
 #include "Board.h"
 #include "Ant.h"
+#include "DoodleBug.h"
 #include "Space.h"
 
 #include <iostream>
@@ -32,8 +33,9 @@ void Board::setBoard(int r, int c) {
             spaces[i][j]->setSpace(j, i, this);
         }
     }
-
-    //Initialize all Critters
+    //Initialize all Critters at Random Locations
+    int x_rand = rand() % rows;
+    int y_rand = rand() % columns;
 }
 
 Board::~Board() {
@@ -70,6 +72,28 @@ int Board::getRows() const {
 
 int Board::getColumns() const {
     return columns;
+}
+
+void Board::createCritter(std::string type, int x_start, int y_start) {
+    extendCritterSlots();
+    if(type == "Ant"){
+        critters[critterCount] = new Ant(spaces[x_start][y_start]);
+    } else if ( type == "Doodlebug"){
+        //critters[critterCount] = new DoodleBug();
+    }
+
+    critterCount++;
+
+}
+
+void Board::extendCritterSlots(){
+    int slotSize;
+    slotSize = critterCount + 1;
+    Critter **newSlots =  new Critter*[slotSize];
+    for(int i = 0; i < critterCount; i++) {
+        newSlots[i] =  critters[i];
+    }
+    critters = newSlots;
 }
 
 

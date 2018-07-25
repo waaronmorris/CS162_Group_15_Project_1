@@ -13,10 +13,6 @@ const std::string Critter::getSymbol() {
     return symbol;
 }
 
-void Critter::setSymbol(const std::string &symbol) {
-    Critter::symbol = symbol;
-}
-
 Space *Critter::getSpace() const {
     return space;
 }

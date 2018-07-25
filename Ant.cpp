@@ -49,3 +49,9 @@ void Ant::move() {
         }
     }
 }
+
+void Ant::breed() {
+    //Use the board generate method to creat a new Critter. 
+    space->getBoard()->createCritter("Ant", 0, 0);
+
+}

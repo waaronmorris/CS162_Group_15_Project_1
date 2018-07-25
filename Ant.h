@@ -13,9 +13,9 @@
 
 class Ant: public Critter {
 public:
-    Ant();
+    Ant(Space* s);
     void move();
-
+    void breed();
 
 
 };
