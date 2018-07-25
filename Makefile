@@ -1,23 +1,28 @@
  CC:=g++ -std=c++11
 
-langston: main.o Board.o Ant.o Space.o utility.o
-	$(CC) main.o Board.o Ant.o Space.o utility.o -o langston
+sim: main.o Critter.o Ant.o Doodlebug.o Board.o Space.o
+	$(CC) main.o Critter.o Ant.o Doodlebug.o Board.o Space.o -o sim
 
 main.o: main.cpp
 	$(CC) -c main.cpp
 
-utility.o: utility.cpp utility.h
-	$(CC) -c utility.cpp
-
-Board.o: Board.cpp Board.h
-	$(CC) -c Board.cpp
+Critter.o: Critter.cpp Critter.h
+	$(CC) -c Critter.cpp
 
 Ant.o: Ant.cpp Ant.h
 	$(CC) -c Ant.cpp
 
+Doodlebug.o: Doodlebug.cpp Doodlebug.h
+	$(CC) -c Doodlebug.cpp
+
+Board.o: Board.cpp Board.h
+	$(CC) -c Board.cpp
+
 Space.o: Space.cpp Space.h
 	$(CC) -c Space.cpp
 
+
+
 clean:
-	rm *.o langston
+	rm *.o sim
 

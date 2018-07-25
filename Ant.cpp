@@ -11,7 +11,8 @@
 
 Ant::Ant(Space* s){
     symbol = "O";
-    setSpace(s);
+    space = s;
+    s->setCritter(this);
 }
 
 void Ant::move() {
@@ -53,4 +54,8 @@ void Ant::move() {
 void Ant::breed() {
     //Use the board generate method to creat a new Critter.
     space->getBoard()->createCritter("Ant", 0, 0);
+}
+
+Ant::~Ant() {
+    std::cout << "Destroy Ant";
 }

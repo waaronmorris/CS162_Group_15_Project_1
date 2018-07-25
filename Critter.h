@@ -14,10 +14,11 @@
 
 class Critter {
 protected:
-    std::string symbol=0;
+    std::string symbol="0";
     Space *space;
 public:
     //required functions
+    virtual ~Critter()=0;
     virtual void move()=0;
     virtual void breed()=0;
 
@@ -38,6 +39,5 @@ public:
      */
     void setSpace(Space *space);
 };
-
 
 #endif //PROJECT_CRITTER_H

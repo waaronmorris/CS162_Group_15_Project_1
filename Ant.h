@@ -16,9 +16,9 @@ public:
     Ant(Space* s);
     void move();
     void breed();
+    ~Ant();
 
 
 };
-
 
 #endif //PROJECT_ANT_H

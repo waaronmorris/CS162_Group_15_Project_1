@@ -16,7 +16,7 @@ Critter *Space::getCritter(){
 std::string Space::getSymbol(){
     std::string rv;
     //add some validation on whether a Critter is present
-    if (getCritter()){
+    if (isOccupied()){
         rv = getCritter()->getSymbol();
     } else {
         rv = " ";
@@ -58,10 +58,10 @@ void Space::setBoard(Board *board) {
 }
 
 bool Space::isOccupied() {
-    if (critter){
-        return true;
+    if (critter == NULL){
+        return false;
     }
     else{
-        return false;
+        return true;
     }
 }

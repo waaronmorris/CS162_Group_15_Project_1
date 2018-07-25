@@ -82,7 +82,4 @@ public:
     virtual ~Space();
 };
 
-};
-
-
 #endif //PROJECT_SPACE_H

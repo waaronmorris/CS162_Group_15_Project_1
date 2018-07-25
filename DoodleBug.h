@@ -4,13 +4,18 @@
 ** Date:
 ** Description:
 *********************************************************************/
-
 #ifndef PROJECT_DOODLEBUG_H
 #define PROJECT_DOODLEBUG_H
 
 #include "Critter.h"
 
-class DoodleBug: public Critter {
+class DoodleBug: public Critter{
+public:
+    DoodleBug(Space* s);
+    void move();
+    void breed();
+
+    virtual ~DoodleBug();
 
 };
 

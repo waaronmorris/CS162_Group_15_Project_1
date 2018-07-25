@@ -6,12 +6,15 @@
  * (i.e. an Ant and Spaces).
 *********************************************************************/
 
+
 #ifndef PROJECT_1_BOARD_H
 #define PROJECT_1_BOARD_H
 
+#include <string>
 
-#include "Space.h"
-#include "Ant.h"
+class Critter;
+
+class Space;
 
 class Board {
 private:
@@ -49,7 +52,7 @@ public:
     /*!
      * Basic Deconstructor
      */
-    void ~Board();
+    ~Board();
     /*!
      * A Function to print the board based on the Symbol of each space.
      */
@@ -72,6 +75,5 @@ public:
     void extendCritterSlots();
 
 };
-
 
 #endif //PROJECT_1_BOARD_H

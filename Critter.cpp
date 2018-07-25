@@ -7,7 +7,11 @@
 
 #include "Critter.h"
 #include <string>
+#include <iostream>
 
+Critter::~Critter(){
+    std::cout << "Destroy Critter";
+}
 
 const std::string Critter::getSymbol() {
     return symbol;
