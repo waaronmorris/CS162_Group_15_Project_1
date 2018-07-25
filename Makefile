@@ -1,7 +1,7 @@
  CC:=g++ -std=c++11
 
 sim: main.o Critter.o Ant.o Doodlebug.o Board.o Space.o
-	$(CC) main.o Critter.o Ant.o Doodlebug.o Board.o Space.o -o sim
+	$(CC) main.o Critter.o Ant.o DoodleBug.o Board.o Space.o -o sim
 
 main.o: main.cpp
 	$(CC) -c main.cpp
@@ -12,8 +12,8 @@ Critter.o: Critter.cpp Critter.h
 Ant.o: Ant.cpp Ant.h
 	$(CC) -c Ant.cpp
 
-Doodlebug.o: Doodlebug.cpp Doodlebug.h
-	$(CC) -c Doodlebug.cpp
+Doodlebug.o: DoodleBug.cpp DoodleBug.h
+	$(CC) -c DoodleBug.cpp
 
 Board.o: Board.cpp Board.h
 	$(CC) -c Board.cpp
