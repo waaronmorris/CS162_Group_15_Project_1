@@ -22,8 +22,20 @@ public:
     virtual void breed()=0;
 
     //Function to assist Space and Board
+    /*!
+     * A function to return the symbol. Ants should be O and Doodlebugs should be X
+     * @return The symbol of the space during print out.
+     */
     const std::string getSymbol();
+    /*!
+     * Get the space a critter is on.
+     * @return
+     */
     Space *getSpace() const;
+    /*!
+     * Set the space a Critter has moved to.
+     * @param space The space a critter now occupies
+     */
     void setSpace(Space *space);
 };
 
