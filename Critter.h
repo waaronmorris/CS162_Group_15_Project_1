@@ -10,6 +10,11 @@
 
 
 class Critter {
+private:
+    std::string symbol=0;
+public:
+    const std::string getSymbol();
+
 
 };
 
