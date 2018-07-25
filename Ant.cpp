@@ -6,7 +6,7 @@
 *********************************************************************/
 
 #include "Ant.h"
-#include "Space.h
+#include "Space.h"
 #include <iostream>
 
 Ant::Ant(Space* s){
@@ -21,7 +21,7 @@ void Ant::move() {
 
     int x_move=0;
     int y_move=0;
-    int dir = rand % 4;
+    int dir = (rand() % 4);
 
     if (dir < 1){
         y_move++;
