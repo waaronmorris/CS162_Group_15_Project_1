@@ -6,38 +6,31 @@
 *********************************************************************/
 
 #include "Space.h"
+#include "Critter.h"
 #include <iostream>
 
-Ant *Space::getAnt() {
-    return ant;
+Critter *Space::getCritter(){
+    return critter;
 }
 
 std::string Space::getSymbol(){
     std::string rv;
-    rv = color;
-    if(ant){
-        if (getCritter()){
-            rv = getCritter()->getSymbol();
-        }
+    //add some validation on whether a Critter is present
+    if (getCritter()){
+        rv = getCritter()->getSymbol();
+    } else {
+        rv = " ";
     }
+
     return rv;
 }
 
-void Space::changeColor() {
-    if (color == "_"){
-        color = "#";
-    }
-    else if (color=="#"){
-        color = "_";
-    }
+void Space::setCritter(Critter *movedCritter){
+    critter = movedCritter;
 }
 
-void Space::setAnt(Ant *movedAnt) {
-    ant = movedAnt;
-}
-
-void Space::removeAnt() {
-    ant = nullptr;
+void Space::removeCritter(){
+    critter = nullptr;
 
 }
 
@@ -45,8 +38,13 @@ Position Space::getPosition() {
     return position;
 }
 
-void Space::setSpace(int x, int y){
+void Space::setSpace(int x, int y, Board *b){
     color = "_";
     position.x = x;
     position.y = y;
+    board = b;
+}
+
+Space::~Space() {
+    delete critter;
 }

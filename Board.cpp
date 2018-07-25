@@ -20,7 +20,7 @@ void Board::printBoard() {
     }
 }
 
-void Board::setBoard(int r, int c, int start_r, int start_c, Direction d) {
+void Board::setBoard(int r, int c) {
     rows = r;
     columns = c;
     spaces = new Space **[rows];
@@ -29,14 +29,9 @@ void Board::setBoard(int r, int c, int start_r, int start_c, Direction d) {
         spaces[i] = new Space *[columns];
         for (int j = 0; j<columns; j++){
             spaces[i][j] = new Space;
-            spaces[i][j]->setSpace(j,i);
+            spaces[i][j]->setSpace(j, i, this);
         }
     }
-
-    //Set to zero base
-    start_r = start_r - 1;
-    start_c = start_c - 1;
-
 
     //Initialize all Critters
 }
@@ -49,14 +44,27 @@ Board::~Board() {
         delete [] spaces[i];
     }
     delete [] spaces;
-    delete ant;
+
+    //Relying on spaces to delete all Critters; only need to delete the array.
+    /*
+    for (int i = 0; i<critterCount; i++){
+        delete critters[i];
+    }
+    delete [] critters;
+    */
+    delete [] critters;
 }
 
 void Board::runBoard() {
-
     //Prints out the results of the Board.
     printBoard();
 }
+
+Space *Board::getSpace(int r, int c) {
+    return spaces[r][c];
+}
+
+
 
 
 

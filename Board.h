@@ -17,12 +17,14 @@ class Board {
 private:
     int rows;
     int columns;
+    int critterCount;
 
     Space ***spaces;
-    Critter *critters;
+    Critter **critters;
 
 public:
-    void setBoard(int r, int c, int start_r, int start_c, Direction d);
+    void setBoard(int r, int c);
+    Space *getSpace(int r, int c);
     void ~Board();
     void printBoard();
     void runBoard();
