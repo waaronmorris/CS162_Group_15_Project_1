@@ -54,6 +54,9 @@ Board::~Board() {
     }
     delete [] critters;
     */
+    for (int j = 0; j<critterCount; j++){
+        delete critters[j];
+    }
     delete [] critters;
 }
 
@@ -89,10 +92,11 @@ void Board::createCritter(std::string type, int x_start, int y_start) {
 void Board::extendCritterSlots(){
     int slotSize;
     slotSize = critterCount + 1;
-    Critter **newSlots =  new Critter*[slotSize];
+    Critter **newSlots =  new Critter *[slotSize];
     for(int i = 0; i < critterCount; i++) {
         newSlots[i] =  critters[i];
     }
+
     critters = newSlots;
 }
 

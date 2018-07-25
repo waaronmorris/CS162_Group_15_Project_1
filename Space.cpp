@@ -46,7 +46,7 @@ void Space::setSpace(int x, int y, Board *b){
 }
 
 Space::~Space() {
-    delete critter;
+    //delete critter;
 }
 
 Board *Space::getBoard() const {
