@@ -12,6 +12,11 @@
 
 
 class Ant: public Critter {
+public:
+    Ant();
+    void move();
+
+
 
 };
 

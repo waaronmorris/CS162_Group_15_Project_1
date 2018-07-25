@@ -23,6 +23,8 @@ private:
     Critter **critters;
 
 public:
+    int getRows() const;
+    int getColumns() const;
     void setBoard(int r, int c);
     Space *getSpace(int r, int c);
     void ~Board();

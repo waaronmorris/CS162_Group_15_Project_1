@@ -13,12 +13,18 @@
 
 
 class Critter {
-private:
+protected:
     std::string symbol=0;
+    Space *space;
 public:
-    const std::string getSymbol();
+    //required functions
     virtual void move()=0;
     virtual void breed()=0;
+
+    //Function to assist Space and Board
+    const std::string getSymbol();
+    Space *getSpace() const;
+    void setSpace(Space *space);
 };
 
 

@@ -64,6 +64,14 @@ Space *Board::getSpace(int r, int c) {
     return spaces[r][c];
 }
 
+int Board::getRows() const {
+    return rows;
+}
+
+int Board::getColumns() const {
+    return columns;
+}
+
 
 
 

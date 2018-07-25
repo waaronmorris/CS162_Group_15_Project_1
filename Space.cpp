@@ -48,3 +48,20 @@ void Space::setSpace(int x, int y, Board *b){
 Space::~Space() {
     delete critter;
 }
+
+Board *Space::getBoard() const {
+    return board;
+}
+
+void Space::setBoard(Board *board) {
+    Space::board = board;
+}
+
+bool Space::isOccupied() {
+    if (critter){
+        return true;
+    }
+    else{
+        return false;
+    }
+}

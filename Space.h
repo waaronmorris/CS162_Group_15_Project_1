@@ -26,6 +26,9 @@ private:
     Critter *critter;
 
 public:
+    bool isOccupied();
+    Board *getBoard() const;
+    void setBoard(Board *board);
     Critter *getCritter();
     std::string getSymbol();
     void setCritter(Critter *movedCritter);
