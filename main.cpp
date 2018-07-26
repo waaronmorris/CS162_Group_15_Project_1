@@ -11,10 +11,12 @@
 int main() {
     Board *gameBoard = new Board();
     gameBoard->setBoard(20, 20);
+    //Create Ant
     for (int i = 0; i < 5; i++){
         gameBoard->createCritter("Ant", i, i);
     }
-    gameBoard->printBoard();
+
+    gameBoard->runBoard();
     delete gameBoard;
     return 0;
 }

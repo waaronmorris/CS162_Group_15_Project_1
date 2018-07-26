@@ -6,6 +6,7 @@
 *********************************************************************/
 
 #include "DoodleBug.h"
+#include "Ant.h"
 #include <iostream>
 
 DoodleBug::DoodleBug(Space *s) {
@@ -21,6 +22,14 @@ void DoodleBug::move() {
 void DoodleBug::breed() {
     std::cout << "Need to Implement";
 
+}
+
+void DoodleBug::starve(){
+    std::cout << "Need to Implement";
+}
+
+void DoodleBug::eatAnt(Ant *eatenAnt){
+    std::cout << "Need to Implement";
 }
 
 DoodleBug::~DoodleBug() {

@@ -38,6 +38,10 @@ public:
      * @param space The space a critter now occupies
      */
     void setSpace(Space *space);
+    /*!
+     * Removes the critter from the Game.
+     */
+    void removeCritter();
 };
 
 #endif //PROJECT_CRITTER_H

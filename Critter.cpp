@@ -9,9 +9,7 @@
 #include <string>
 #include <iostream>
 
-Critter::~Critter(){
-    std::cout << "Destroy Critter";
-}
+Critter::~Critter(){}
 
 const std::string Critter::getSymbol() {
     return symbol;
@@ -25,4 +23,9 @@ void Critter::setSpace(Space *s) {
     space->removeCritter();
     space = s;
     space->setCritter(this);
+}
+
+void Critter::removeCritter(){
+    space->removeCritter();
+    space = nullptr;
 }

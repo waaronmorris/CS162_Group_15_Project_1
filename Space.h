@@ -23,7 +23,7 @@ private:
     std::string color;
     Board *board;
     Position position;
-    Critter *critter;
+    Critter *critter = nullptr;
 
 public:
     /*!

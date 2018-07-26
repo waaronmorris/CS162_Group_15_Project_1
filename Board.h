@@ -11,6 +11,7 @@
 #define PROJECT_1_BOARD_H
 
 #include <string>
+#include <map>
 
 class Critter;
 
@@ -20,10 +21,10 @@ class Board {
 private:
     int rows;
     int columns;
-    int critterCount=0;
-
     Space ***spaces;
-    Critter **critters;
+
+    std::map<std::string, int> critterCount;
+    std::map<std::string, Critter **> critters;
 
 public:
     /*!
@@ -72,7 +73,7 @@ public:
     /*!
      * Basic Function to expand the number of Critters on the Board.
      */
-    void extendCritterSlots();
+    void extendCritterSlots(std::string type);
 
 };
 

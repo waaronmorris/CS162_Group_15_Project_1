@@ -22,6 +22,9 @@ void Board::printBoard() {
 }
 
 void Board::setBoard(int r, int c) {
+    critterCount["Ant"]=0;
+    critterCount["Doodlebug"]=0;
+
     rows = r;
     columns = c;
     spaces = new Space **[rows];
@@ -39,6 +42,7 @@ void Board::setBoard(int r, int c) {
 }
 
 Board::~Board() {
+    //Delete Spaces
     for (int i = 0; i<rows; i++){
         for (int j = 0; j<columns; j++){
             delete spaces[i][j];
@@ -47,21 +51,46 @@ Board::~Board() {
     }
     delete [] spaces;
 
-    //Relying on spaces to delete all Critters; only need to delete the array.
-    /*
-    for (int i = 0; i<critterCount; i++){
-        delete critters[i];
+    //Delete Critters
+    for (auto x : critters){
+        for (int j = 0; j<critterCount[x.first]; j++){
+            delete critters[x.first][j];
+        }
+        delete [] critters[x.first];
     }
-    delete [] critters;
-    */
-    for (int j = 0; j<critterCount; j++){
-        delete critters[j];
-    }
-    delete [] critters;
+
 }
 
 void Board::runBoard() {
+    //Move Doodlebugs
+    for (int i = 0; i < critterCount["Doodlebug"]; i++){
+        critters["Doodlebug"][i]->move();
+    }
+
+    //Move Ants
+    for (int i = 0; i < critterCount["Ant"]; i++){
+        critters["Ant"][i]->move();
+        std::cout << "********\nANT MOVE\n********" << std::endl;
+        printBoard();
+    }
+
+    /*
+    //Starve Doodlebugs
+    for (int i = 0; i < critterCount["Doodlebug"]; i++){
+        critters["Doodlebug"][i]->starve();
+    }
+
+    //Breed DoodleBugs
+
+
+    //Breed Ants
+    for (int i = 0; i < critterCount["Ant"]; i++){
+        critters["Ant"][i]->breed();
+    }
+
+     */
     //Prints out the results of the Board.
+    std::cout << "********\nTime Step Complete\n********" << std::endl;
     printBoard();
 }
 
@@ -78,30 +107,29 @@ int Board::getColumns() const {
 }
 
 void Board::createCritter(std::string type, int x_start, int y_start) {
-    extendCritterSlots();
+    extendCritterSlots(type);
     if(type == "Ant"){
-        critters[critterCount] = new Ant(spaces[x_start][y_start]);
+        critters[type][critterCount[type]] = new Ant(spaces[x_start][y_start]);
     } else if ( type == "Doodlebug"){
-        //critters[critterCount] = new DoodleBug();
+        //critters[type][critterCount[type]] = new DoodleBug(spaces[x_start][y_start]);
     }
 
-    critterCount++;
-
+    critterCount[type]++;
 }
 
-void Board::extendCritterSlots(){
+void Board::extendCritterSlots(std::string type){
     int slotSize;
-    slotSize = critterCount + 1;
+    slotSize = critterCount[type] + 1;
     Critter **newSlots =  new Critter *[slotSize];
-    for(int i = 0; i < critterCount; i++) {
-        newSlots[i] =  critters[i];
+    for(int i = 0; i < critterCount[type]; i++) {
+        newSlots[i] =  critters[type][i];
     }
 
-    delete [] critters; // Free the array.
+    delete [] critters[type]; // Free the array.
 
-
-    critters = newSlots;
+    critters[type] = newSlots;
 }
+
 
 
 

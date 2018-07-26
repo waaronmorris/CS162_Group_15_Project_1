@@ -19,7 +19,7 @@ std::string Space::getSymbol(){
     if (isOccupied()){
         rv = getCritter()->getSymbol();
     } else {
-        rv = " ";
+        rv = "_";
     }
 
     return rv;
@@ -31,7 +31,6 @@ void Space::setCritter(Critter *movedCritter){
 
 void Space::removeCritter(){
     critter = nullptr;
-
 }
 
 Position Space::getPosition() {
