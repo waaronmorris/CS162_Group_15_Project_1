@@ -12,6 +12,9 @@
 
 #include "menu.h"
 // FIX UPDATING CURRENT VALUES - currentInt (a member of MenuItem) is not changing after getting integer input
+////I may be wrong but it looks like you are only updating "rows" externally in main. I don't see how the MenuItem object is 
+////updating internally. I don't really have a good understanding of how all your menu code works but is there another function you
+////need to call before the menu will update with the choice? - Tres
 // FIX DOUBLE INPUT (not a priority, as this program doesn't use doubles)
 int main()
 {
