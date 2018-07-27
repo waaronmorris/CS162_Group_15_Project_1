@@ -11,6 +11,9 @@
 //		 FIGURE IT OUT I WILL SWITCH BACK TO A REGULAR ARRAY OF "MenuItem" (NO POINTERS)
 
 #include "Board.h"
+#include "menu.h"
+#include "menu-item.h"
+
 // FIX UPDATING CURRENT VALUES - currentInt (a member of MenuItem) is not changing after getting integer input
 
 ////I may be wrong but it looks like you are only updating "rows" externally in main. I don't see how the MenuItem object is 
