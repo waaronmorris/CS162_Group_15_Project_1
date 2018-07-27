@@ -21,7 +21,6 @@ public:
     virtual ~Critter()=0;
     virtual void move()=0;
     virtual void breed()=0;
-    virtual Space *getNewSpace(int direction, bool &validSpace)=0;
 
     //Function to assist Space and Board
     /*!
@@ -43,6 +42,14 @@ public:
      * Removes the critter from the Game.
      */
     void removeCritter();
+
+    /*!
+     * Get the space in a given direction.
+     * @param direction
+     * @param validSpace
+     * @return
+     */
+    virtual Space *getNewSpace(int direction);
 };
 
 #endif //PROJECT_CRITTER_H
