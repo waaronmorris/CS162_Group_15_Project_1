@@ -1,28 +1,50 @@
- CC:=g++ -std=c++11
+### Adapted make file from: 
+### 	@author - Harlan James <waldroha@oregonstate.edu
+### Author: Tres Oelze
+### Date: 7.26.18
 
-sim: main.o Critter.o Ant.o Doodlebug.o Board.o Space.o
-	$(CC) main.o Critter.o Ant.o DoodleBug.o Board.o Space.o -o sim
+PROJ = Doodlebug
 
-main.o: main.cpp
-	$(CC) -c main.cpp
+$(CXX) = g++
 
-Critter.o: Critter.cpp Critter.h
-	$(CC) -c Critter.cpp
+SRC = main.cpp
+SRC += Ant.cpp
+SRC += Board.cpp
+SRC += Critter.cpp
+SRC += DoodleBug.cpp
+SRC += menu.cpp
+SRC += menu_item.cpp
+SRC += my_lib.cpp
+SRC += Space.cpp
 
-Ant.o: Ant.cpp Ant.h
-	$(CC) -c Ant.cpp
+OBJ = $(SRC:.cpp=.o)
 
-Doodlebug.o: DoodleBug.cpp DoodleBug.h
-	$(CC) -c DoodleBug.cpp
+BIN = $(PROJ).bin
 
-Board.o: Board.cpp Board.h
-	$(CC) -c Board.cpp
+CFLAGS = -Wall -pedantic -std=gnu++11
 
-Space.o: Space.cpp Space.h
-	$(CC) -c Space.cpp
+VOPT = --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes
 
+.PHONY: default debug clean zip
 
+default: clean $(BIN) debug
 
-clean:
-	rm *.o sim
+debug: $(BIN)
+	@valgrind $(VOPT) ./$(BIN)
+
+$(BIN): $(OBJ)
+	@echo "CC	$@"
+	@$(CXX) $(CFLAGS) $^ -o $@
+
+%.o: %.cpp
+	@echo "CC	$^"
+	@$(CXX) $(CFLAGS) -c $^
+
+zip: 
+	zip $(PROJ).zip *.cpp *.hpp makefile
+
+clean: $(CLEAN)
+	@echo "RM	*.o"
+	@echo "RM	$(BIN)"
+	@rm -f *.o $(BIN)
 
