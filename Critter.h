@@ -21,6 +21,7 @@ public:
     virtual ~Critter()=0;
     virtual void move()=0;
     virtual void breed()=0;
+    virtual Space *getNewSpace(int direction, bool &validSpace)=0;
 
     //Function to assist Space and Board
     /*!

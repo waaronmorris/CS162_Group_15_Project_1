@@ -13,6 +13,7 @@
 
 class Ant: public Critter {
 public:
+    Space *getNewSpace(int direction, bool &validSpace);
     Ant(Space* s);
     void move();
     void breed();

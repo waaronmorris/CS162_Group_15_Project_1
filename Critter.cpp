@@ -29,3 +29,4 @@ void Critter::removeCritter(){
     space->removeCritter();
     space = nullptr;
 }
+
