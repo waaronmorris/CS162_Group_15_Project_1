@@ -142,9 +142,9 @@ int main()
 						
 						// Game initialization
 						Board *gameBoard = new Board();
-						gameBoard->setBoard(20, 20);
+						gameBoard->setBoard(rows, cols);
 
-						//Create Ant
+						//Create Ants
 						for (int i = 0; i < 5; i++)
 						{
 							gameBoard->createCritter("Ant", i, i);
