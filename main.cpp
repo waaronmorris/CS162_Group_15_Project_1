@@ -10,12 +10,56 @@
 //		 MAKE "currentInt" CHANGE WHEN THE USER DOES INTEGER INPUT. IF I AM UNABLE TO
 //		 FIGURE IT OUT I WILL SWITCH BACK TO A REGULAR ARRAY OF "MenuItem" (NO POINTERS)
 
-#include "menu.h"
+#include "Board.h"
 // FIX UPDATING CURRENT VALUES - currentInt (a member of MenuItem) is not changing after getting integer input
+
 ////I may be wrong but it looks like you are only updating "rows" externally in main. I don't see how the MenuItem object is 
 ////updating internally. I don't really have a good understanding of how all your menu code works but is there another function you
 ////need to call before the menu will update with the choice? - Tres
-// FIX DOUBLE INPUT (not a priority, as this program doesn't use doubles)
+
+// FIX DOUBLE INPUT (not a priority, as this program doesn't use doubles, but for future projects)
+
+/* Tres -
+ * 
+ * The way my menu functions work is I declare a Menu object and add MenuItems to it.
+ * Each MenuItem serves to organize Menu inputs, but so far it isn't able to save the last value entered by the user, which is a bug I'm trying to fix.
+ * I've worked around that by saving the user inputs in external variables (such as "rows", what you pointed out in your above comment).
+ * Unfortunately, when MenuItem.GetIntInput() is called, it is supposed to save the user input to a private member called "currentInt", but it doesn't
+ * 		seem to actually save. Every time the Menu.Prompt() is called, it should display the MenuItems with the updated current values, but the current
+ * 		values don't actually seem to change. This is the bug I'm trying to fix, but until then, I'm using external variables to save user input.
+ * 
+ * 
+ * As for how the menu works, here is a simple pseudocode that mimics what I do:
+ * 		
+ *		Declaration of Menu object
+ *		
+ *		Menu.AddItem( new MenuItem( "Start" ))	// Index 0
+ *		Menu.AddItem( new MenuItem( int ))		// Index 1
+ *		Menu.AddItem( new MenuItem( bool )) 	// Index 2
+ *		Menu.AddItem( new MenuItem( "Quit" ))	// Index 3
+ *		
+ * 		do
+ *		{
+ *			Menu.Prompt() 						// Asks user to choose a MenuItem from the array
+ *			
+ *			switch Menu.GetInput() 				// Decides what to do when the user chooses a MenuItem
+ *			{
+ *				case 1: 						// MenuItem at index 1
+ *					Menu[1].GetIntInput(); 		// Get int input from the MenuItem at index 1
+ * 					
+ * 					break;
+ *				case 2: 						// MenuItem at index 2
+ *					Menu[2].GetBoolInput(); 	// Get bool input from the MenuItem at index 2
+ * 					
+ * 					break;
+ * 				default: 						// If user does not choose indexes 1 and 2
+ * 					break;
+ *			}
+ *		} while Menu.GetInput() is not index 0 or 3; 	// Continues loop while the user does not choose the MenuItem at indexes 0 and 3
+ * 		
+ * 		// Continue code
+ */
+
 int main()
 {
 	// Randomize seed
@@ -93,7 +137,9 @@ int main()
 							 << ants + doodlebugs << "critters, or " << ants << " ants and " << doodlebugs << " doodlebugs.\n"
 							 << "Please either increase the board dimensions or decrease the critter count.\n";
 					else
-					{/*
+					{
+						// Use the variables "rows", "cols", "iterations", "ants", and "doodlebugs" here: they have the values inputted by the user
+						
 						// Game initialization
 						Board *gameBoard = new Board();
 						gameBoard->setBoard(20, 20);
@@ -106,7 +152,7 @@ int main()
 
 						gameBoard->runBoard();
 						delete gameBoard;
-						return 0;*/
+						return 0;
 					}
 
 					// Text to prompt user to again
