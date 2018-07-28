@@ -6,22 +6,17 @@
 **				are trying to eat them, while also moving randomly.
 *********************************************************************/ 
 
-// NOTE: I'M CURRENTLY USING A POINTER ARRAY OF "MenuItem" IN MY MENUS. I AM TRYING TO
-//		 MAKE "currentInt" CHANGE WHEN THE USER DOES INTEGER INPUT. IF I AM UNABLE TO
-//		 FIGURE IT OUT I WILL SWITCH BACK TO A REGULAR ARRAY OF "MenuItem" (NO POINTERS)
-
 #include "Board.h"
 #include "menu.h"
-#include "menu_item.h"
-#include "my_lib.h"
 
 // FIX UPDATING CURRENT VALUES - currentInt (a member of MenuItem) is not changing after getting integer input
+// FIX DOUBLE INPUT (not a priority, as this program doesn't use doubles, but for future projects)
+
 
 ////I may be wrong but it looks like you are only updating "rows" externally in main. I don't see how the MenuItem object is 
 ////updating internally. I don't really have a good understanding of how all your menu code works but is there another function you
 ////need to call before the menu will update with the choice? - Tres
 
-// FIX DOUBLE INPUT (not a priority, as this program doesn't use doubles, but for future projects)
 
 /* Tres -
  * 
@@ -42,7 +37,7 @@
  *		Menu.AddItem( new MenuItem( bool )) 	// Index 2
  *		Menu.AddItem( new MenuItem( "Quit" ))	// Index 3
  *		
- * 		do
+ * 		do // Menu Loop
  *		{
  *			Menu.Prompt() 						// Asks user to choose a MenuItem from the array
  *			
