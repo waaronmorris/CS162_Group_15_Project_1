@@ -471,8 +471,10 @@ string MenuItem::GetCurrentString()
 *********************************************************************/
 int MenuItem::GetIntInput()
 {
-	currentInt = GetInt(prompt, bounds, (int) minBound, bounds, (int) maxBound);
-	cout << "\nCurrentInt: " << currentInt << endl;
+
+	this->currentInt = GetInt(prompt, bounds, (int) minBound, bounds, (int) maxBound);
+    this->currentDouble = this->currentInt;
+    cout << "\nCurrent Int: " << currentInt << endl;
 	return currentInt;
 }
 
@@ -509,7 +511,8 @@ bool MenuItem::GetBoolInput()
 *********************************************************************/
 char MenuItem::GetCharInput()
 {
-	return currentChar = GetString(prompt)[0];
+	currentChar = GetString(prompt)[0];
+	return currentChar;
 }
 
 /*********************************************************************
