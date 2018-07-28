@@ -12,7 +12,8 @@
 
 #include "Board.h"
 #include "menu.h"
-#include "menu-item.h"
+#include "menu_item.h"
+#include "my_lib.h"
 
 // FIX UPDATING CURRENT VALUES - currentInt (a member of MenuItem) is not changing after getting integer input
 
@@ -74,6 +75,7 @@ int main()
 	Menu nextStep = Menu("Next Turn Menu");
 	
 	// Options Menu Starting Values
+    Board *gameBoard = new Board();
 	double rows = 20;
 	double cols = 20;
 	double iterations = 100;
@@ -144,18 +146,18 @@ int main()
 						// Use the variables "rows", "cols", "iterations", "ants", and "doodlebugs" here: they have the values inputted by the user
 						
 						// Game initialization
-						Board *gameBoard = new Board();
 						gameBoard->setBoard(rows, cols);
 
 						//Create Ants
-						for (int i = 0; i < 5; i++)
+						for (int i = 0; i < ants; i++)
 						{
-							gameBoard->createCritter("Ant", i, i);
+							gameBoard->createCritter("Ant", RandInt(0, (cols-1)), RandInt(0, (rows-1)));
 						}
 
-						gameBoard->runBoard();
-						delete gameBoard;
-						return 0;
+                        for (int i = 0; i < iterations; i++)
+                        {
+                            gameBoard->runBoard();
+                        }
 					}
 
 					// Text to prompt user to again
@@ -168,6 +170,8 @@ int main()
 				break;
 		}
 	} while (mainMenu.GetInput() != 1);
-	
+
+
+    delete gameBoard;
 	return 0;
 }

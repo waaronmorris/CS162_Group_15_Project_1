@@ -18,7 +18,6 @@ public:
     void breed();
     ~Ant();
 
-
 };
 
 #endif //PROJECT_ANT_H
