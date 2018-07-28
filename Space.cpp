@@ -9,6 +9,11 @@
 #include "Critter.h"
 #include <iostream>
 
+Space::Space
+{
+	this->critter = nullptr;
+}
+
 Critter *Space::getCritter(){
     return critter;
 }

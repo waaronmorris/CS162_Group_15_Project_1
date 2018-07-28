@@ -160,25 +160,29 @@ int main()
 						int ants = options[4]->GetCurrentInt();
 						int doodlebugs = options[5]->GetCurrentInt();
 						
+						// Board initialization
 						gameBoard->setBoard(rows, cols);
+						gameBoard->addCritters(ants, doodlebugs);
 						
+						/* I created the ants and doodlebugs in Board.setBoard(), please look over - Ibrahim
+						 * 
 						//Create Ants
 						for (int i = 0; i < ants; i++)
 						{
 							gameBoard->createCritter("Ant", RandInt(0, (cols-1)), RandInt(0, (rows-1)));
 						}
-
+						*/
+						
+						// Run Simulation
                         for (int i = 0; i < iterations; i++)
-                        {
                             gameBoard->runBoard();
-                        }
 						
 						// End of Simulation
 						delete gameBoard;
+						
+						// Text to prompt user to again
+						mainMenu.SetMenuTitle("Play Again?");
 					}
-
-					// Text to prompt user to again
-					mainMenu.SetMenuTitle("Play Again?");
 				}
 				
 				break;

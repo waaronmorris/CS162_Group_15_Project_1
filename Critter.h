@@ -14,7 +14,7 @@
 
 class Critter {
 protected:
-    std::string symbol="0";
+    std::string symbol;
     Space *space;
 public:
     //required functions

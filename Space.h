@@ -23,9 +23,14 @@ private:
     std::string color;
     Board *board;
     Position position;
-    Critter *critter = nullptr;
+    Critter *critter;
 
 public:
+	/*!
+     * Default Constructor for Space
+     */
+    Space();
+	
     /*!
      * Identifies if the space is occupied
      *
@@ -49,7 +54,7 @@ public:
      * @return A Critter
      */
     Critter *getCritter();
-    /*
+    /*!
      * returns the symbol of the critter currently on the space
      */
     std::string getSymbol();

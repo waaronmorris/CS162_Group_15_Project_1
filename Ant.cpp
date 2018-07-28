@@ -27,7 +27,7 @@ void Ant::move() {
 }
 
 void Ant::breed() {
-    //Use the board generate method to creat a new Critter.
+    //Use the board generate method to create a new Critter.
     Space *newSpace;
     bool validSpace = false;
     int direction = 0;

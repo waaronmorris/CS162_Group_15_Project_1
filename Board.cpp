@@ -8,7 +8,6 @@
 #include "Board.h"
 #include "Ant.h"
 #include "DoodleBug.h"
-#include "Space.h"
 
 #include <iostream>
 
@@ -21,9 +20,42 @@ void Board::printBoard() {
     }
 }
 
-void Board::setBoard(int r, int c) {
-    critterCount["Ant"]=0;
-    critterCount["Doodlebug"]=0;
+void Board::GetEmptySpaces(Position* empty, int& count)
+{
+	if (empty != NULL)
+		delete [] empty;
+	
+	Position temp = new Position[rows * columns];
+	count = 0;
+	
+	// Adds empty positions to "temp"
+	for (int i = 0; i < rows; i++)
+		for (int j = 0; j < columns; j++)
+		{
+			string symbol = board[i][j]->getSpace(i, j)->getCritter().getSymbol();
+			
+			if (symbol != "X" && symbol != "O")
+			{
+				Position p;
+				p.x = i;
+				p.y = j;
+				
+				temp[count++] = p;
+			}
+		}
+	
+	// Removes extra elements from temp
+	empty = new Position*[count];
+	
+	for (int i = 0; i < count; i++)
+		empty[i] = temp[i];
+	
+	delete [] temp;
+}
+
+void Board::setBoard(int r, int c, int ants, int doodlebugs) {
+    critterCount["Ant"] = 0; // Set to "ants"??? - Ibrahim
+    critterCount["Doodlebug"] = 0; // Set to "doodlebugs"??? - Ibrahim
 
     rows = r;
     columns = c;
@@ -31,11 +63,51 @@ void Board::setBoard(int r, int c) {
 
     for (int i = 0; i<rows; i++){
         spaces[i] = new Space *[columns];
+		
         for (int j = 0; j<columns; j++){
             spaces[i][j] = new Space;
             spaces[i][j]->setSpace(j, i, this);
         }
     }
+	
+    // Initialize all Critters at Random Locations
+	// Ants
+	for (int i = 0; i < ants; i++)
+	{
+		Position* empty;
+		int count = 0;
+		
+		GetEmptySpaces(empty, count);
+		
+		int randPos = rand() % count;
+		
+		//board[empty[randPos].x][empty[randPos].y]-> getSpace()->getBoard()-> createCritter("Ant", empty[randPos].x, empty[randPos].y); // I don't get the structure very well - Ibrahim
+		board[empty[randPos].x][empty[randPos].y]->createCritter("Ant", empty[randPos].x, empty[randPos].y); // Which one is right??? - Ibrahim
+		
+		delete [] empty;
+	}
+	// Doodlebugs
+	for (int i = 0; i < doodlebugs; i++)
+	{
+		Position* empty;
+		int count = 0;
+		
+		GetEmptySpaces(empty, count);
+		
+		int randPos = rand() % count;
+		
+		//board[empty[randPos].x][empty[randPos].y]-> getSpace()->getBoard()-> createCritter("Doodlebug", empty[randPos].x, empty[randPos].y); // I don't get the structure very well - Ibrahim
+		board[empty[randPos].x][empty[randPos].y]->createCritter("Doodlebug", empty[randPos].x, empty[randPos].y); // Which one is right??? - Ibrahim
+		
+		delete [] empty;
+	}
+	
+    // Incorporate map members??? I don't know how to use them - Ibrahim
+}
+
+void Board::addCritters(int numAnts)
+{
+	
     //Initialize all Critters at Random Locations
     int x_rand = rand() % rows;
     int y_rand = rand() % columns;
