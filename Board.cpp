@@ -70,7 +70,7 @@ void Board::runBoard() {
     //Move Ants
     for (int i = 0; i < critterCount["Ant"]; i++){
         critters["Ant"][i]->move();
-        std::cout << "********\nANT MOVE\n********" << std::endl;
+        //std::cout << "********\nANT MOVE\n********" << std::endl;
         printBoard();
     }
 
