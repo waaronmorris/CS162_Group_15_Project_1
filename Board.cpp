@@ -71,7 +71,7 @@ void Board::runBoard() {
     for (int i = 0; i < critterCount["Ant"]; i++){
         critters["Ant"][i]->move();
         //std::cout << "********\nANT MOVE\n********" << std::endl;
-        printBoard();
+        //printBoard();
     }
 
     /*
@@ -90,8 +90,8 @@ void Board::runBoard() {
 
      */
     //Prints out the results of the Board.
-    std::cout << "********\nTime Step Complete\n********" << std::endl;
     printBoard();
+    std::cout << "********\nTime Step Complete\n********" << std::endl;
 }
 
 Space *Board::getSpace(int r, int c) {
