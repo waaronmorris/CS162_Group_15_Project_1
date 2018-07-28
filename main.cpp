@@ -9,7 +9,12 @@
 #include "Board.h"
 #include "menu.h"
 
-// FIX UPDATING CURRENT VALUES - currentInt (a member of MenuItem) is not changing after getting integer input
+#define ROWS 20
+#define COLUMNS 20
+#define ITERATIONS 100
+#define ANTS 100
+#define DOODLEBUGS 5
+
 // FIX DOUBLE INPUT (not a priority, as this program doesn't use doubles, but for future projects)
 
 
@@ -27,6 +32,7 @@
  * 		seem to actually save. Every time the Menu.Prompt() is called, it should display the MenuItems with the updated current values, but the current
  * 		values don't actually seem to change. This is the bug I'm trying to fix, but until then, I'm using external variables to save user input.
  * 
+ * UPDATE: Thanks to William Morris, the issue has now been resolved. No longer using external variables to save user input.
  * 
  * As for how the menu works, here is a simple pseudocode that mimics what I do:
  * 		
@@ -64,18 +70,10 @@ int main()
 	// Randomize seed
 	srand(time(NULL));
 	
-	// Variable declaration
+	// Menu Declarations
 	Menu mainMenu = Menu("Main Menu");
 	Menu options = Menu("Options Menu");
 	Menu nextStep = Menu("Next Turn Menu");
-	
-	// Options Menu Starting Values
-    Board *gameBoard = new Board();
-	double rows = 20;
-	double cols = 20;
-	double iterations = 100;
-	int ants = 100;
-	int doodlebugs = 5;
 	
 	// Menu menu items
 	mainMenu.AddItem(new MenuItem("Game Options (EXTRA CREDIT INCLUDED)"));
@@ -83,11 +81,12 @@ int main()
 	
 	// Options menu items
 	options.AddItem(new MenuItem("Play Game"));
-	options.AddItem(new MenuItem("Number of Rows", "Number of Rows", 5, 100, rows));
-	options.AddItem(new MenuItem("Number of Columns", "Number of Columns", 5, 100, cols));
-	options.AddItem(new MenuItem("Number of Iterations", "Number of Iterations", 1, 100000, iterations));
-	options.AddItem(new MenuItem("Number of Initial Ants", "Number of Initial Ants", 1, 10000, ants));
-	options.AddItem(new MenuItem("Number of Initial Doodlebugs", "Number of Initial Doodlebugs", 1, 10000, doodlebugs));
+	options.AddItem(new MenuItem("Number of Rows", "Number of Rows", 5, 100, ROWS));
+	options.AddItem(new MenuItem("Number of Columns", "Number of Columns", 5, 100, COLUMNS));
+	options.AddItem(new MenuItem("Number of Iterations", "Number of Iterations", 1, 100000, ITERATIONS));
+	options.AddItem(new MenuItem("Number of Initial Ants", "Number of Initial Ants", 1, 10000, ANTS));
+	options.AddItem(new MenuItem("Number of Initial Doodlebugs", "Number of Initial Doodlebugs", 1, 10000, DOODLEBUGS));
+	options.AddItem(new MenuItem("Reset Defaults"));
 	options.AddItem(new MenuItem("Back"));
 	
 	// Next Step Menu (we don't have to use this, it's an option)
@@ -108,41 +107,61 @@ int main()
 					switch (options.GetInput())
 					{
 						case 1: // Number of Rows
-							rows = options[1]->GetIntInput();
+							options[1]->GetIntInput();
 							
 							break;
 						case 2: // Number of Columns
-							cols = options[2]->GetIntInput();
+							options[2]->GetIntInput();
 							
 							break;
 						case 3: // Number of Iterations
-							iterations = options[3]->GetIntInput();
+							options[3]->GetIntInput();
 							
 							break;
 						case 4: // Number of Initial Ants
-							ants = options[4]->GetIntInput();
+							options[4]->GetIntInput();
 							
 							break;
 						case 5: // Number of Initial Doodlebugs
-							doodlebugs = options[5]->GetIntInput();
+							options[5]->GetIntInput();
+							
+							break;
+						case 6:
+							options[1]->SetCurrentInt(ROWS);
+							options[2]->SetCurrentInt(COLUMNS);
+							options[3]->SetCurrentInt(ITERATIONS);
+							options[4]->SetCurrentInt(ANTS);
+							options[5]->SetCurrentInt(DOODLEBUGS);
 							
 							break;
 					}
-				} while (options.GetInput() != 0 && options.GetInput() != 6);
+				} while (options.GetInput() != 0 && options.GetInput() != 7); // Repeat Options Menu while user did not choose "Start" or "Back"
 				
 				if (options.GetInput() == 0) // Play Game
 				{
-					if (ants + doodlebugs > rows * cols)
-						cout << "\nThere are " << rows * cols << " available spaces and you want to add"
-							 << ants + doodlebugs << "critters, or " << ants << " ants and " << doodlebugs << " doodlebugs.\n"
+					// if (ants + doodlebugs > rows * cols)
+					if (options[4]->GetCurrentInt() * options[5]->GetCurrentInt() > options[1]->GetCurrentInt() * options[2]->GetCurrentInt())
+					{
+						Divider();
+						
+						cout << "\nThere are " << options[1]->GetCurrentInt() * options[2]->GetCurrentInt() << " available spaces and you want to add "
+							 << options[4]->GetCurrentInt() * options[5]->GetCurrentInt() << " critters, or "
+							 << options[4]->GetCurrentInt() << " ants and " << options[5]->GetCurrentInt() << " doodlebugs.\n"
 							 << "Please either increase the board dimensions or decrease the critter count.\n";
+					}
 					else
 					{
-						// Use the variables "rows", "cols", "iterations", "ants", and "doodlebugs" here: they have the values inputted by the user
-						
 						// Game initialization
+						Board *gameBoard = new Board();
+						
+						int rows = options[1]->GetCurrentInt();
+						int cols = options[2]->GetCurrentInt();
+						int iterations = options[3]->GetCurrentInt();
+						int ants = options[4]->GetCurrentInt();
+						int doodlebugs = options[5]->GetCurrentInt();
+						
 						gameBoard->setBoard(rows, cols);
-
+						
 						//Create Ants
 						for (int i = 0; i < ants; i++)
 						{
@@ -153,6 +172,9 @@ int main()
                         {
                             gameBoard->runBoard();
                         }
+						
+						// End of Simulation
+						delete gameBoard;
 					}
 
 					// Text to prompt user to again
@@ -165,8 +187,6 @@ int main()
 				break;
 		}
 	} while (mainMenu.GetInput() != 1);
-
-
-    delete gameBoard;
+	
 	return 0;
 }

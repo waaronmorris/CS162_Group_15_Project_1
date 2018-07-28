@@ -28,10 +28,12 @@ class MenuItem
 	
 	public:
 		MenuItem();
-		MenuItem(string, string, double, double, double);
-		MenuItem(string, string, string, string, bool);
-		MenuItem(string, string, string);
-		MenuItem(string);
+		MenuItem(string, string, int, int, int, ReturnType = INT);
+		MenuItem(string, string, double, double, double, ReturnType = DOUBLE);
+		MenuItem(string, string, string, string, bool, ReturnType = BOOL);
+		MenuItem(string, string, char, ReturnType = CHAR);
+		MenuItem(string, string, string, ReturnType = STRING);
+		MenuItem(string, ReturnType = VOID);
 		MenuItem(const MenuItem &);
 		
 		MenuItem& operator = (const MenuItem &);
@@ -61,10 +63,19 @@ class MenuItem
 		double GetMaxBound();
 		
 		int GetCurrentInt();
+		void SetCurrentInt(int);
+		
 		double GetCurrentDouble();
+		void SetCurrentDouble(double);
+		
 		bool GetCurrentBool();
+		void SetCurrentBool(bool);
+		
 		char GetCurrentChar();
+		void SetCurrentChar(char);
+		
 		string GetCurrentString();
+		void SetCurrentString(string);
 		
 		int GetIntInput();
 		double GetDoubleInput();

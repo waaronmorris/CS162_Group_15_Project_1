@@ -31,14 +31,14 @@ MenuItem::MenuItem()
 }
 /*********************************************************************
 ** Function: MenuItem
-** Description: Constructor for a MenuItem class object for doubles
-** Parameters: string, string, double, double, double
+** Description: Constructor for a MenuItem class object for integers
+** Parameters: string, string, int, int, int
 ** Pre-Conditions: none
 ** Post-Conditions: none
 *********************************************************************/
-MenuItem::MenuItem(string title, string prompt, double minBound, double maxBound, double currentValue)
+MenuItem::MenuItem(string title, string prompt, int minBound, int maxBound, int currentValue, ReturnType type)
 {
-	this->type = DOUBLE;
+	this->type = type;
 	this->title = title;
 	this->prompt = prompt;
 	this->bounds = true;
@@ -54,14 +54,37 @@ MenuItem::MenuItem(string title, string prompt, double minBound, double maxBound
 }
 /*********************************************************************
 ** Function: MenuItem
-** Description: Constructor for a MenuItem class object for bools
+** Description: Constructor for a MenuItem class object for doubles
+** Parameters: string, string, double, double, double
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
+MenuItem::MenuItem(string title, string prompt, double minBound, double maxBound, double currentValue, ReturnType type)
+{
+	this->type = type;
+	this->title = title;
+	this->prompt = prompt;
+	this->bounds = true;
+	this->minBound = minBound;
+	this->maxBound = maxBound;
+	this->yesPrompt = "";
+	this->noPrompt = "";
+	this->currentInt = currentValue;
+	this->currentDouble = currentValue;
+	this->currentBool = false;
+	this->currentChar = 0;
+	this->currentString = "";
+}
+/*********************************************************************
+** Function: MenuItem
+** Description: Constructor for a MenuItem class object for booleans
 ** Parameters: string, string, string, string
 ** Pre-Conditions: none
 ** Post-Conditions: none
 *********************************************************************/
-MenuItem::MenuItem(string title, string prompt, string yesPrompt, string noPrompt, bool currentBool)
+MenuItem::MenuItem(string title, string prompt, string yesPrompt, string noPrompt, bool currentBool, ReturnType type)
 {
-	this->type = BOOL;
+	this->type = type;
 	this->title = title;
 	this->prompt = prompt;
 	this->bounds = false;
@@ -77,14 +100,37 @@ MenuItem::MenuItem(string title, string prompt, string yesPrompt, string noPromp
 }
 /*********************************************************************
 ** Function: MenuItem
+** Description: Constructor for a MenuItem class object for chars
+** Parameters: string, string, char
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
+MenuItem::MenuItem(string title, string prompt, char currentChar, ReturnType type)
+{
+	this->type = type;
+	this->title = title;
+	this->prompt = prompt;
+	this->bounds = false;
+	this->minBound = 0;
+	this->maxBound = 0;
+	this->yesPrompt = "";
+	this->noPrompt = "";
+	this->currentInt = 0;
+	this->currentDouble = 0;
+	this->currentBool = false;
+	this->currentChar = currentChar;
+	this->currentString = "";
+}
+/*********************************************************************
+** Function: MenuItem
 ** Description: Constructor for a MenuItem class object for strings
 ** Parameters: string, string, string
 ** Pre-Conditions: none
 ** Post-Conditions: none
 *********************************************************************/
-MenuItem::MenuItem(string title, string prompt, string currentString)
+MenuItem::MenuItem(string title, string prompt, string currentString, ReturnType type)
 {
-	this->type = STRING;
+	this->type = type;
 	this->title = title;
 	this->prompt = prompt;
 	this->bounds = false;
@@ -105,9 +151,9 @@ MenuItem::MenuItem(string title, string prompt, string currentString)
 ** Pre-Conditions: none
 ** Post-Conditions: none
 *********************************************************************/
-MenuItem::MenuItem(string title)
+MenuItem::MenuItem(string title, ReturnType type)
 {
-	this->type = VOID;
+	this->type = type;
 	this->title = title;
 	this->prompt = "";
 	this->bounds = false;
@@ -404,7 +450,7 @@ double MenuItem::GetMaxBound()
 
 /*********************************************************************
 ** Function: GetCurrentInt
-** Description: Gets the current integer value
+** Description: Returns the current integer value
 ** Parameters: none
 ** Pre-Conditions: none
 ** Post-Conditions: none
@@ -413,10 +459,21 @@ int MenuItem::GetCurrentInt()
 {
 	return this->currentInt;
 }
+/*********************************************************************
+** Function: SetCurrentInt
+** Description: Sets the current int value
+** Parameters: int
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
+void MenuItem::SetCurrentInt(int currentInt)
+{
+	this->currentInt = currentInt;
+}
 
 /*********************************************************************
 ** Function: GetCurrentDouble
-** Description: Gets the current double value
+** Description: Returns the current double value
 ** Parameters: none
 ** Pre-Conditions: none
 ** Post-Conditions: none
@@ -425,10 +482,21 @@ double MenuItem::GetCurrentDouble()
 {
 	return this->currentDouble;
 }
+/*********************************************************************
+** Function: SetCurrentDouble
+** Description: Sets the current double value
+** Parameters: double
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
+void MenuItem::SetCurrentDouble(double currentDouble)
+{
+	this->currentDouble = currentDouble;
+}
 
 /*********************************************************************
 ** Function: GetCurrentBool
-** Description: Gets the current boolean value
+** Description: Returns the current boolean value
 ** Parameters: none
 ** Pre-Conditions: none
 ** Post-Conditions: none
@@ -437,10 +505,21 @@ bool MenuItem::GetCurrentBool()
 {
 	return this->currentBool;
 }
+/*********************************************************************
+** Function: SetCurrentBool
+** Description: Sets the current boolean value
+** Parameters: bool
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
+void MenuItem::SetCurrentBool(bool currentBool)
+{
+	this->currentBool = currentBool;
+}
 
 /*********************************************************************
 ** Function: GetCurrentChar
-** Description: Gets the current character value
+** Description: Returns the current character value
 ** Parameters: none
 ** Pre-Conditions: none
 ** Post-Conditions: none
@@ -449,10 +528,21 @@ char MenuItem::GetCurrentChar()
 {
 	return this->currentChar;
 }
+/*********************************************************************
+** Function: SetCurrentChar
+** Description: Sets the current char value
+** Parameters: char
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
+void MenuItem::SetCurrentChar(char currentChar)
+{
+	this->currentChar = currentChar;
+}
 
 /*********************************************************************
 ** Function: GetCurrentString
-** Description: Gets the string string value
+** Description: Returns the current string value
 ** Parameters: none
 ** Pre-Conditions: none
 ** Post-Conditions: none
@@ -460,6 +550,17 @@ char MenuItem::GetCurrentChar()
 string MenuItem::GetCurrentString()
 {
 	return this->currentString;
+}
+/*********************************************************************
+** Function: SetCurrentString
+** Description: Sets the current string value
+** Parameters: string
+** Pre-Conditions: none
+** Post-Conditions: none
+*********************************************************************/
+void MenuItem::SetCurrentString(string currentString)
+{
+	this->currentString = currentString;
 }
 
 /*********************************************************************
@@ -471,11 +572,7 @@ string MenuItem::GetCurrentString()
 *********************************************************************/
 int MenuItem::GetIntInput()
 {
-
-	this->currentInt = GetInt(prompt, bounds, (int) minBound, bounds, (int) maxBound);
-    this->currentDouble = this->currentInt;
-    cout << "\nCurrent Int: " << currentInt << endl;
-	return currentInt;
+	return currentInt = GetInt(GetPrompt(), bounds, (int) minBound, bounds, (int) maxBound);
 }
 
 /*********************************************************************
@@ -487,7 +584,7 @@ int MenuItem::GetIntInput()
 *********************************************************************/
 double MenuItem::GetDoubleInput()
 {
-	return currentDouble = GetInt(prompt, bounds, (int) minBound, bounds, (int) maxBound);
+	return currentDouble = GetInt(GetPrompt(), bounds, (int) minBound, bounds, (int) maxBound);
 }
 
 /*********************************************************************
@@ -499,7 +596,7 @@ double MenuItem::GetDoubleInput()
 *********************************************************************/
 bool MenuItem::GetBoolInput()
 {
-	return currentBool = GetBool(prompt, yesPrompt, noPrompt);
+	return currentBool = GetBool(GetPrompt(), yesPrompt, noPrompt);
 }
 
 /*********************************************************************
@@ -511,18 +608,17 @@ bool MenuItem::GetBoolInput()
 *********************************************************************/
 char MenuItem::GetCharInput()
 {
-	currentChar = GetString(prompt)[0];
-	return currentChar;
+	return currentChar = GetString(GetPrompt())[0];
 }
 
 /*********************************************************************
 ** Function: GetStringInput
-** Description: Gets a string input from user
+** Description: Gets a string input from user (BUGGY)
 ** Parameters: none
 ** Pre-Conditions: none
 ** Post-Conditions: none
 *********************************************************************/
 string MenuItem::GetStringInput()
 {
-	return currentString = GetString(prompt);
+	return currentString = GetString(GetPrompt());
 }

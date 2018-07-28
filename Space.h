@@ -34,7 +34,7 @@ public:
     bool isOccupied();
 
     /*!
-     * get teh board of the space
+     * get the board of the space
      * @return A Board
      */
     Board *getBoard() const;
