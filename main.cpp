@@ -160,7 +160,7 @@ int main()
 						
 						// Board initialization
 						gameBoard->setBoard(rows, cols);
-						gameBoard->addCritters(ants, doodlebugs);
+						//gameBoard->addCritters(ants, doodlebugs);
 						
 						/* I created the ants and doodlebugs in Board.setBoard(), please look over - Ibrahim
 						 * 
