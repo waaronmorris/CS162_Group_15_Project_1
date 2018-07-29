@@ -5,7 +5,7 @@
 
 PROJ = Doodlebug
 
-$(CXX) = g++
+$(CXX) = g++ -std=c++11
 
 SRC = main.cpp
 SRC += Ant.cpp
