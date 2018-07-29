@@ -29,7 +29,10 @@ class Menu
 		void AddItem(MenuItem*);
 		
 		void RemoveItem(int index);
+<<<<<<< HEAD
 		void RemoveAll();
+=======
+>>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
 		
 		void DisplayItems(bool = true);
 		

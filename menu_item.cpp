@@ -31,6 +31,7 @@ MenuItem::MenuItem()
 }
 /*********************************************************************
 ** Function: MenuItem
+<<<<<<< HEAD
 ** Description: Constructor for a MenuItem class object for integers
 ** Parameters: string, string, int, int, int
 ** Pre-Conditions: none
@@ -54,14 +55,22 @@ MenuItem::MenuItem(string title, string prompt, int minBound, int maxBound, int 
 }
 /*********************************************************************
 ** Function: MenuItem
+=======
+>>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
 ** Description: Constructor for a MenuItem class object for doubles
 ** Parameters: string, string, double, double, double
 ** Pre-Conditions: none
 ** Post-Conditions: none
 *********************************************************************/
+<<<<<<< HEAD
 MenuItem::MenuItem(string title, string prompt, double minBound, double maxBound, double currentValue, ReturnType type)
 {
 	this->type = type;
+=======
+MenuItem::MenuItem(string title, string prompt, double minBound, double maxBound, double currentValue)
+{
+	this->type = DOUBLE;
+>>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
 	this->title = title;
 	this->prompt = prompt;
 	this->bounds = true;
@@ -77,14 +86,24 @@ MenuItem::MenuItem(string title, string prompt, double minBound, double maxBound
 }
 /*********************************************************************
 ** Function: MenuItem
+<<<<<<< HEAD
 ** Description: Constructor for a MenuItem class object for booleans
+=======
+** Description: Constructor for a MenuItem class object for bools
+>>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
 ** Parameters: string, string, string, string
 ** Pre-Conditions: none
 ** Post-Conditions: none
 *********************************************************************/
+<<<<<<< HEAD
 MenuItem::MenuItem(string title, string prompt, string yesPrompt, string noPrompt, bool currentBool, ReturnType type)
 {
 	this->type = type;
+=======
+MenuItem::MenuItem(string title, string prompt, string yesPrompt, string noPrompt, bool currentBool)
+{
+	this->type = BOOL;
+>>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
 	this->title = title;
 	this->prompt = prompt;
 	this->bounds = false;
@@ -100,6 +119,7 @@ MenuItem::MenuItem(string title, string prompt, string yesPrompt, string noPromp
 }
 /*********************************************************************
 ** Function: MenuItem
+<<<<<<< HEAD
 ** Description: Constructor for a MenuItem class object for chars
 ** Parameters: string, string, char
 ** Pre-Conditions: none
@@ -123,14 +143,22 @@ MenuItem::MenuItem(string title, string prompt, char currentChar, ReturnType typ
 }
 /*********************************************************************
 ** Function: MenuItem
+=======
+>>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
 ** Description: Constructor for a MenuItem class object for strings
 ** Parameters: string, string, string
 ** Pre-Conditions: none
 ** Post-Conditions: none
 *********************************************************************/
+<<<<<<< HEAD
 MenuItem::MenuItem(string title, string prompt, string currentString, ReturnType type)
 {
 	this->type = type;
+=======
+MenuItem::MenuItem(string title, string prompt, string currentString)
+{
+	this->type = STRING;
+>>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
 	this->title = title;
 	this->prompt = prompt;
 	this->bounds = false;
@@ -151,9 +179,15 @@ MenuItem::MenuItem(string title, string prompt, string currentString, ReturnType
 ** Pre-Conditions: none
 ** Post-Conditions: none
 *********************************************************************/
+<<<<<<< HEAD
 MenuItem::MenuItem(string title, ReturnType type)
 {
 	this->type = type;
+=======
+MenuItem::MenuItem(string title)
+{
+	this->type = VOID;
+>>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
 	this->title = title;
 	this->prompt = "";
 	this->bounds = false;
@@ -450,7 +484,11 @@ double MenuItem::GetMaxBound()
 
 /*********************************************************************
 ** Function: GetCurrentInt
+<<<<<<< HEAD
 ** Description: Returns the current integer value
+=======
+** Description: Gets the current integer value
+>>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
 ** Parameters: none
 ** Pre-Conditions: none
 ** Post-Conditions: none
@@ -459,6 +497,7 @@ int MenuItem::GetCurrentInt()
 {
 	return this->currentInt;
 }
+<<<<<<< HEAD
 /*********************************************************************
 ** Function: SetCurrentInt
 ** Description: Sets the current int value
@@ -474,6 +513,12 @@ void MenuItem::SetCurrentInt(int currentInt)
 /*********************************************************************
 ** Function: GetCurrentDouble
 ** Description: Returns the current double value
+=======
+
+/*********************************************************************
+** Function: GetCurrentDouble
+** Description: Gets the current double value
+>>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
 ** Parameters: none
 ** Pre-Conditions: none
 ** Post-Conditions: none
@@ -482,6 +527,7 @@ double MenuItem::GetCurrentDouble()
 {
 	return this->currentDouble;
 }
+<<<<<<< HEAD
 /*********************************************************************
 ** Function: SetCurrentDouble
 ** Description: Sets the current double value
@@ -497,6 +543,12 @@ void MenuItem::SetCurrentDouble(double currentDouble)
 /*********************************************************************
 ** Function: GetCurrentBool
 ** Description: Returns the current boolean value
+=======
+
+/*********************************************************************
+** Function: GetCurrentBool
+** Description: Gets the current boolean value
+>>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
 ** Parameters: none
 ** Pre-Conditions: none
 ** Post-Conditions: none
@@ -505,6 +557,7 @@ bool MenuItem::GetCurrentBool()
 {
 	return this->currentBool;
 }
+<<<<<<< HEAD
 /*********************************************************************
 ** Function: SetCurrentBool
 ** Description: Sets the current boolean value
@@ -520,6 +573,12 @@ void MenuItem::SetCurrentBool(bool currentBool)
 /*********************************************************************
 ** Function: GetCurrentChar
 ** Description: Returns the current character value
+=======
+
+/*********************************************************************
+** Function: GetCurrentChar
+** Description: Gets the current character value
+>>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
 ** Parameters: none
 ** Pre-Conditions: none
 ** Post-Conditions: none
@@ -528,6 +587,7 @@ char MenuItem::GetCurrentChar()
 {
 	return this->currentChar;
 }
+<<<<<<< HEAD
 /*********************************************************************
 ** Function: SetCurrentChar
 ** Description: Sets the current char value
@@ -543,6 +603,12 @@ void MenuItem::SetCurrentChar(char currentChar)
 /*********************************************************************
 ** Function: GetCurrentString
 ** Description: Returns the current string value
+=======
+
+/*********************************************************************
+** Function: GetCurrentString
+** Description: Gets the string string value
+>>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
 ** Parameters: none
 ** Pre-Conditions: none
 ** Post-Conditions: none
@@ -551,6 +617,7 @@ string MenuItem::GetCurrentString()
 {
 	return this->currentString;
 }
+<<<<<<< HEAD
 /*********************************************************************
 ** Function: SetCurrentString
 ** Description: Sets the current string value
@@ -562,6 +629,8 @@ void MenuItem::SetCurrentString(string currentString)
 {
 	this->currentString = currentString;
 }
+=======
+>>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
 
 /*********************************************************************
 ** Function: GetIntInput
@@ -572,7 +641,13 @@ void MenuItem::SetCurrentString(string currentString)
 *********************************************************************/
 int MenuItem::GetIntInput()
 {
+<<<<<<< HEAD
 	return currentInt = GetInt(GetPrompt(), bounds, (int) minBound, bounds, (int) maxBound);
+=======
+	currentInt = GetInt(prompt, bounds, (int) minBound, bounds, (int) maxBound);
+	cout << "\nCurrentInt: " << currentInt << endl;
+	return currentInt;
+>>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
 }
 
 /*********************************************************************
@@ -584,7 +659,11 @@ int MenuItem::GetIntInput()
 *********************************************************************/
 double MenuItem::GetDoubleInput()
 {
+<<<<<<< HEAD
 	return currentDouble = GetInt(GetPrompt(), bounds, (int) minBound, bounds, (int) maxBound);
+=======
+	return currentDouble = GetInt(prompt, bounds, (int) minBound, bounds, (int) maxBound);
+>>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
 }
 
 /*********************************************************************
@@ -596,7 +675,11 @@ double MenuItem::GetDoubleInput()
 *********************************************************************/
 bool MenuItem::GetBoolInput()
 {
+<<<<<<< HEAD
 	return currentBool = GetBool(GetPrompt(), yesPrompt, noPrompt);
+=======
+	return currentBool = GetBool(prompt, yesPrompt, noPrompt);
+>>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
 }
 
 /*********************************************************************
@@ -608,17 +691,29 @@ bool MenuItem::GetBoolInput()
 *********************************************************************/
 char MenuItem::GetCharInput()
 {
+<<<<<<< HEAD
 	return currentChar = GetString(GetPrompt())[0];
+=======
+	return currentChar = GetString(prompt)[0];
+>>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
 }
 
 /*********************************************************************
 ** Function: GetStringInput
+<<<<<<< HEAD
 ** Description: Gets a string input from user (BUGGY)
+=======
+** Description: Gets a string input from user
+>>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
 ** Parameters: none
 ** Pre-Conditions: none
 ** Post-Conditions: none
 *********************************************************************/
 string MenuItem::GetStringInput()
 {
+<<<<<<< HEAD
 	return currentString = GetString(GetPrompt());
+=======
+	return currentString = GetString(prompt);
+>>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
 }

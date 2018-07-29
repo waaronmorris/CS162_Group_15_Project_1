@@ -17,7 +17,6 @@ public:
     void move();
     void breed();
     ~Ant();
-
 };
 
 #endif //PROJECT_ANT_H

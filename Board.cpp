@@ -105,14 +105,6 @@ void Board::setBoard(int r, int c, int ants, int doodlebugs) {
     // Incorporate map members??? I don't know how to use them - Ibrahim
 }
 
-void Board::addCritters(int numAnts)
-{
-	
-    //Initialize all Critters at Random Locations
-    int x_rand = rand() % rows;
-    int y_rand = rand() % columns;
-}
-
 Board::~Board() {
     //Delete Spaces
     for (int i = 0; i<rows; i++){
@@ -142,6 +134,7 @@ void Board::runBoard() {
     //Move Ants
     for (int i = 0; i < critterCount["Ant"]; i++){
         critters["Ant"][i]->move();
+		
         //std::cout << "********\nANT MOVE\n********" << std::endl;
         //printBoard();
     }

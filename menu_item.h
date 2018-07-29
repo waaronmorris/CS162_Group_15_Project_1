@@ -28,12 +28,19 @@ class MenuItem
 	
 	public:
 		MenuItem();
+<<<<<<< HEAD
 		MenuItem(string, string, int, int, int, ReturnType = INT);
 		MenuItem(string, string, double, double, double, ReturnType = DOUBLE);
 		MenuItem(string, string, string, string, bool, ReturnType = BOOL);
 		MenuItem(string, string, char, ReturnType = CHAR);
 		MenuItem(string, string, string, ReturnType = STRING);
 		MenuItem(string, ReturnType = VOID);
+=======
+		MenuItem(string, string, double, double, double);
+		MenuItem(string, string, string, string, bool);
+		MenuItem(string, string, string);
+		MenuItem(string);
+>>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
 		MenuItem(const MenuItem &);
 		
 		MenuItem& operator = (const MenuItem &);
@@ -63,6 +70,7 @@ class MenuItem
 		double GetMaxBound();
 		
 		int GetCurrentInt();
+<<<<<<< HEAD
 		void SetCurrentInt(int);
 		
 		double GetCurrentDouble();
@@ -76,6 +84,12 @@ class MenuItem
 		
 		string GetCurrentString();
 		void SetCurrentString(string);
+=======
+		double GetCurrentDouble();
+		bool GetCurrentBool();
+		char GetCurrentChar();
+		string GetCurrentString();
+>>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
 		
 		int GetIntInput();
 		double GetDoubleInput();
