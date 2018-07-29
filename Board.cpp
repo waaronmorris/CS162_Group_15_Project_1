@@ -123,7 +123,6 @@ Board::~Board() {
         }
         delete [] critters[x.first];
     }
-
 }
 
 void Board::runBoard() {

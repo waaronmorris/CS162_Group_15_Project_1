@@ -24,9 +24,9 @@ private:
 public:
 	/*!
      * Default Constructor for Space
-     */
+     
     Space();
-	
+	*/
     /*!
      * Identifies if the space is occupied
      *

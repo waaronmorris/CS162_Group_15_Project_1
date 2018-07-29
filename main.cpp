@@ -159,8 +159,7 @@ int main()
 						int doodlebugs = options[5]->GetCurrentInt();
 						
 						// Board initialization
-						gameBoard->setBoard(rows, cols);
-						//gameBoard->addCritters(ants, doodlebugs);
+						gameBoard->setBoard(rows, cols, ants, doodlebugs);
 						
 						/* I created the ants and doodlebugs in Board.setBoard(), please look over - Ibrahim
 						 * 

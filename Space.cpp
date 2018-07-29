@@ -6,12 +6,12 @@
 *********************************************************************/
 
 #include "Space.h"
-
+/*
 Space::Space
 {
 	this->critter = NULL;
 }
-
+*/
 Critter *Space::getCritter(){
     return critter;
 }
