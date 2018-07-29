@@ -34,7 +34,7 @@ void Board::GetEmptySpaces(Position* empty, int& count)
 	for (int i = 0; i < rows; i++)
 		for (int j = 0; j < columns; j++)
 		{
-			string symbol = board[i][j]->getSpace(i, j)->getCritter().getSymbol();
+			std::string symbol = board[i][j]->getSpace(i, j)->getCritter().getSymbol();
 			
 			if (symbol != "X" && symbol != "O")
 			{
