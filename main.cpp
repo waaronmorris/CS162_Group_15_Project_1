@@ -138,12 +138,12 @@ int main()
 				if (options.GetInput() == 0) // Play Game
 				{
 					// if (ants + doodlebugs > rows * cols)
-					if (options[4]->GetCurrentInt() * options[5]->GetCurrentInt() > options[1]->GetCurrentInt() * options[2]->GetCurrentInt())
+					if (options[4]->GetCurrentInt() + options[5]->GetCurrentInt() > options[1]->GetCurrentInt() * options[2]->GetCurrentInt())
 					{
 						Divider();
 						
 						cout << "\nThere are " << options[1]->GetCurrentInt() * options[2]->GetCurrentInt() << " available spaces and you want to add "
-							 << options[4]->GetCurrentInt() * options[5]->GetCurrentInt() << " critters, or "
+							 << options[4]->GetCurrentInt() + options[5]->GetCurrentInt() << " critters, or "
 							 << options[4]->GetCurrentInt() << " ants and " << options[5]->GetCurrentInt() << " doodlebugs.\n"
 							 << "Please either increase the board dimensions or decrease the critter count.\n";
 					}
@@ -161,19 +161,10 @@ int main()
 						// Board initialization
 						gameBoard->setBoard(rows, cols, ants, doodlebugs);
 						
-						/* I created the ants and doodlebugs in Board.setBoard(), please look over - Ibrahim
-						 * 
-						//Create Ants
-						for (int i = 0; i < ants; i++)
-						{
-							gameBoard->createCritter("Ant", RandInt(0, (cols-1)), RandInt(0, (rows-1)));
-						}
-						*/
-						
 						// Run Simulation
                         for (int i = 0; i < iterations; i++)
                             gameBoard->runBoard();
-						
+						/**/
 						// End of Simulation
 						delete gameBoard;
 						

@@ -23,7 +23,7 @@ std::string Space::getSymbol(){
     if (isOccupied()){
         rv = getCritter()->getSymbol();
     } else {
-        rv = " "; // I changed this from "_"
+        rv = "_";
     }
 
     return rv;

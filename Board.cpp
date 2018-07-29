@@ -21,21 +21,15 @@ void Board::printBoard() {
     }
 }
 
-void Board::GetEmptySpaces(Position* empty, int& count)
+Position* Board::GetEmptySpaces(int& count)
 {
-	if (empty != NULL)
-		delete [] empty;
-	
 	Position* temp = new Position[rows * columns];
-	count = 0;
 	
 	// Adds empty positions to "temp"
 	for (int i = 0; i < rows; i++)
 		for (int j = 0; j < columns; j++)
 		{
-			std::string symbol = spaces[i][j]->getCritter()->getSymbol();
-			
-			if (symbol != "X" && symbol != "O")
+			if (!spaces[i][j]->isOccupied())
 			{
 				Position p;
 				p.x = i;
@@ -46,17 +40,18 @@ void Board::GetEmptySpaces(Position* empty, int& count)
 		}
 	
 	// Removes extra elements from temp
-	empty = new Position[count];
-	
+	Position* empty = new Position[count];
+	std::cout << "\n\ncount: " << count << "\n\n";
 	for (int i = 0; i < count; i++)
 		empty[i] = temp[i];
 	
 	delete [] temp;
+	return empty;
 }
 
 void Board::setBoard(int r, int c, int ants, int doodlebugs) {
-    critterCount["Ant"] = 0; // Set to "ants"??? - Ibrahim
-    critterCount["Doodlebug"] = 0; // Set to "doodlebugs"??? - Ibrahim
+    critterCount["Ant"] = 0; // ERROR: Set to "ants"??? - Ibrahim
+    critterCount["Doodlebug"] = 0; // ERROR: Set to "doodlebugs"??? - Ibrahim
 	
     rows = r;
     columns = c;
@@ -65,8 +60,8 @@ void Board::setBoard(int r, int c, int ants, int doodlebugs) {
     for (int i = 0; i < rows; i++){
         spaces[i] = new Space *[columns];
 		
-        for (int j = 0; j<columns; j++){
-            spaces[i][j] = new Space;
+        for (int j = 0; j < columns; j++){
+            spaces[i][j] = new Space();
             spaces[i][j]->setSpace(j, i, this);
         }
     }
@@ -75,29 +70,24 @@ void Board::setBoard(int r, int c, int ants, int doodlebugs) {
 	// Ants
 	for (int i = 0; i < ants; i++)
 	{
-		Position* empty;
 		int count = 0;
-		
-		GetEmptySpaces(empty, count);
+		Position* empty = GetEmptySpaces(count);
 		
 		int randPos = rand() % count;
 		
-		//spaces[empty[randPos].x][empty[randPos].y]->->getBoard()-> createCritter("Ant", empty[randPos].x, empty[randPos].y); // I don't get the structure very well - Ibrahim
-		createCritter("Ant", empty[randPos].x, empty[randPos].y); // Which one is right??? - Ibrahim
+		createCritter("Ant", empty[randPos].x, empty[randPos].y);
 		
-		delete [] empty;
+		delete [] empty;/**/
 	}
-	// Doodlebugs
+	// Doodlebugs - ERROR: doodlebugs don't seem to get added to the board
 	for (int i = 0; i < doodlebugs; i++)
 	{
-		Position* empty;
 		int count = 0;
-		
-		GetEmptySpaces(empty, count);
+		Position* empty = GetEmptySpaces(count);
 		
 		int randPos = rand() % count;
 		
-		//spaces[empty[randPos].x][empty[randPos].y]->->getBoard()-> createCritter("Ant", empty[randPos].x, empty[randPos].y); // I don't get the structure very well - Ibrahim
+		//spaces[empty[randPos].x][empty[randPos].y]->getBoard()->createCritter("Ant", empty[randPos].x, empty[randPos].y); // I don't get the structure very well - Ibrahim
 		createCritter("Doodlebug", empty[randPos].x, empty[randPos].y); // Which one is right??? - Ibrahim
 		
 		delete [] empty;
@@ -115,14 +105,14 @@ Board::~Board() {
         delete [] spaces[i];
     }
     delete [] spaces;
-
+	/*
     //Delete Critters
     for (auto x : critters){
         for (int j = 0; j<critterCount[x.first]; j++){
             delete critters[x.first][j];
         }
         delete [] critters[x.first];
-    }
+    }*/
 }
 
 void Board::runBoard() {

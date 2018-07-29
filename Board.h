@@ -29,7 +29,7 @@ private:
     std::map<std::string, int> critterCount;
     std::map<std::string, Critter **> critters;
 	
-	void GetEmptySpaces(Position* empty, int& count);
+	Position* GetEmptySpaces(int& count);
 
 public:
     /*!
