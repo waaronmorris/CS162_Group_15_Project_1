@@ -35,7 +35,8 @@ Position* Board::GetEmptySpaces(int& count)
 				p.x = i;
 				p.y = j;
 				
-				temp[count++] = p;
+				temp[count] = p;
+                count++;
 			}
 		}
 	
@@ -105,14 +106,14 @@ Board::~Board() {
         delete [] spaces[i];
     }
     delete [] spaces;
-	/*
+
     //Delete Critters
     for (auto x : critters){
         for (int j = 0; j<critterCount[x.first]; j++){
             delete critters[x.first][j];
         }
         delete [] critters[x.first];
-    }*/
+    }
 }
 
 void Board::runBoard() {
@@ -124,12 +125,8 @@ void Board::runBoard() {
     //Move Ants
     for (int i = 0; i < critterCount["Ant"]; i++){
         critters["Ant"][i]->move();
-		
-        std::cout << "********\nANT MOVE\n********" << std::endl;
-        printBoard();
     }
 
-    /*
     //Starve Doodlebugs
     for (int i = 0; i < critterCount["Doodlebug"]; i++){
         critters["Doodlebug"][i]->starve();
@@ -143,8 +140,6 @@ void Board::runBoard() {
         critters["Ant"][i]->breed();
     }
 
-     */
-    //Prints out the results of the Board.
     std::cout << "********\nTime Step Complete\n********" << std::endl;
     printBoard();
 }

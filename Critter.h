@@ -22,6 +22,7 @@ public:
     virtual ~Critter()=0;
     virtual void move()=0;
     virtual void breed()=0;
+    virtual void starve();
 
     //Function to assist Space and Board
     /*!
