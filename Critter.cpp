@@ -15,6 +15,9 @@ const std::string Critter::getSymbol() {
     return symbol;
 }
 
+void Critter::starve(){
+}
+
 Space *Critter::getSpace() const {
     return space;
 }
