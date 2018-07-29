@@ -11,7 +11,6 @@
 #include <string>
 #include "Space.h"
 
-
 class Critter {
 protected:
     std::string symbol;

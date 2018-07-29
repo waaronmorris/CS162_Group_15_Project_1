@@ -5,9 +5,9 @@
 ** Description:
 *********************************************************************/
 
-#include "Critter.h"
-#include <string>
 #include <iostream>
+#include <string>
+#include "Critter.h"
 
 Critter::~Critter(){}
 
@@ -27,11 +27,11 @@ void Critter::setSpace(Space *s) {
 
 void Critter::removeCritter(){
     space->removeCritter();
-    space = nullptr;
+    space = NULL;
 }
 
 Space *Critter::getNewSpace(int direction){
-    if (space != nullptr) {
+    if (space != NULL) {
         Position location = space->getPosition();
         int x_size = space->getBoard()->getRows();
         int y_size = space->getBoard()->getColumns();
@@ -51,15 +51,15 @@ Space *Critter::getNewSpace(int direction){
 
         if (((location.x + x_move) < 0) || ((location.y + y_move) < 0)){
             //Move Off board left or up
-            return nullptr;
+            return NULL;
         } else if (((location.x + x_move) >= x_size ) || ((location.y + y_move) >= y_size)){
             //Move Off board right or bottom
-            return nullptr;
+            return NULL;
         } else {
             Space *newSpace = space->getBoard()->getSpace((location.x + x_move), (location.y + y_move));
             return newSpace;
         }
     } else {
-        return nullptr;
+        return NULL;
     }
 }

@@ -62,12 +62,12 @@ void Ant::breed() {
     do{
         newSpace = getNewSpace(direction);
         direction++;
-        if (newSpace != nullptr || direction >= 3){
+        if (newSpace != NULL || direction >= 3){
             validSpace = true;
         }
     } while (!validSpace);
 
-    if (newSpace != nullptr){
+    if (newSpace != NULL){
         space->getBoard()->createCritter("Ant", newSpace->getPosition().x, newSpace->getPosition().y);
     }
 	/* Old Code???

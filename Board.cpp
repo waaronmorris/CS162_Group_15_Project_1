@@ -5,9 +5,11 @@
 ** Description: Implementation for Langston Board.
 *********************************************************************/
 
+#include <string>
 #include "Board.h"
 #include "Ant.h"
 #include "DoodleBug.h"
+#include "Space.h"
 
 #include <iostream>
 
@@ -25,7 +27,7 @@ void Board::GetEmptySpaces(Position* empty, int& count)
 	if (empty != NULL)
 		delete [] empty;
 	
-	Position temp = new Position[rows * columns];
+	Position* temp = new Position[rows * columns];
 	count = 0;
 	
 	// Adds empty positions to "temp"

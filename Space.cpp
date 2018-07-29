@@ -1,17 +1,15 @@
 /*********************************************************************
-** Program name: Space
+** Program name: 
 ** Author:
 ** Date:
-** Description: A class for a space in a Langston simulation.
+** Description: 
 *********************************************************************/
 
 #include "Space.h"
-#include "Critter.h"
-#include <iostream>
 
 Space::Space
 {
-	this->critter = nullptr;
+	this->critter = NULL;
 }
 
 Critter *Space::getCritter(){
@@ -36,7 +34,7 @@ void Space::setCritter(Critter *movedCritter){
 }
 
 void Space::removeCritter(){
-    critter = nullptr;
+    critter = NULL;
 }
 
 Position Space::getPosition() {

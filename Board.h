@@ -1,35 +1,24 @@
 /*********************************************************************
-<<<<<<< HEAD
-<<<<<<< HEAD
 ** Program name: 
 ** Author:
 ** Date:
 ** Description: 
-=======
-=======
->>>>>>> d8e20ade9b3d20b57cdc2e0c89210287cafaa26e
-** Program name: Langston Ants
-** Author:
-** Date:
-** Description: A space for keeping track of all the items on a Langston board
- * (i.e. an Ant and Spaces).
-<<<<<<< HEAD
->>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
-=======
->>>>>>> d8e20ade9b3d20b57cdc2e0c89210287cafaa26e
 *********************************************************************/
-
 
 #ifndef PROJECT_1_BOARD_H
 #define PROJECT_1_BOARD_H
 
 #include <string>
 #include <map>
-#include "Space.h"
 
 class Critter;
 
 class Space;
+
+struct Position{
+    int x;
+    int y;
+};
 
 class Board {
 private:
@@ -40,7 +29,7 @@ private:
     std::map<std::string, int> critterCount;
     std::map<std::string, Critter **> critters;
 	
-	void GetEmptySpaces(Position* empty, int& count)
+	void GetEmptySpaces(Position* empty, int& count);
 
 public:
     /*!

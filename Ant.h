@@ -10,7 +10,6 @@
 
 #include "Critter.h"
 
-
 class Ant: public Critter {
 public:
     Ant(Space* s);

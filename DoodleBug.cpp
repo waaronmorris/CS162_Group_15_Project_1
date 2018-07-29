@@ -5,9 +5,8 @@
 ** Description:
 *********************************************************************/
 
-#include "DoodleBug.h"
-#include "Ant.h"
 #include <iostream>
+#include "DoodleBug.h"
 
 DoodleBug::DoodleBug(Space *s) {
 	symbol = "X";
@@ -78,12 +77,12 @@ void DoodleBug::breed() {
 	do {
 	newSpace = getNewSpace(direction);
 	direction++;
-	if (newSpace != nullptr || direction >= 3) {
+	if (newSpace != NULL || direction >= 3) {
 	validSpace = true;
 	}
 	} while (!validSpace);
 
-	if (newSpace != nullptr) {
+	if (newSpace != NULL) {
 	space->getBoard()->createCritter("Doodlebug", newSpace->getPosition().x, newSpace->getPosition().y);
 	}
 	*/

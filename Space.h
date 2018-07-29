@@ -8,15 +8,11 @@
 #ifndef PROJECT_SPACE_H
 #define PROJECT_SPACE_H
 
+#include <iostream>
+#include <cstdlib>
 #include <string>
+#include "Critter.h"
 #include "Board.h"
-
-class Critter;
-
-struct Position{
-    int x;
-    int y;
-};
 
 class Space {
 private:

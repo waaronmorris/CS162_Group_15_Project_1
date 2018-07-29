@@ -129,8 +129,6 @@ void Menu::RemoveItem(int index)
 	delete [] items;
 	items = temp;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
 /*********************************************************************
 ** Function: RemoveAll
 ** Description: Removes all MenuItems from array
@@ -143,10 +141,6 @@ void Menu::RemoveAll()
 	for (int i = 0; i < numItems; i++)
 		RemoveItem(0);
 }
-=======
->>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
-=======
->>>>>>> d8e20ade9b3d20b57cdc2e0c89210287cafaa26e
 
 /*********************************************************************
 ** Function: DisplayItems
