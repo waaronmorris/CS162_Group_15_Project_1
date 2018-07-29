@@ -42,7 +42,6 @@ public:
      * Removes the critter from the Game.
      */
     void removeCritter();
-<<<<<<< HEAD
 
     /*!
      * Get the space in a given direction.
@@ -51,8 +50,6 @@ public:
      * @return
      */
     virtual Space *getNewSpace(int direction);
-=======
->>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
 };
 
 #endif //PROJECT_CRITTER_H

@@ -1,16 +1,22 @@
 /*********************************************************************
 <<<<<<< HEAD
+<<<<<<< HEAD
 ** Program name: 
 ** Author:
 ** Date:
 ** Description: 
 =======
+=======
+>>>>>>> d8e20ade9b3d20b57cdc2e0c89210287cafaa26e
 ** Program name: Langston Ants
 ** Author:
 ** Date:
 ** Description: A space for keeping track of all the items on a Langston board
  * (i.e. an Ant and Spaces).
+<<<<<<< HEAD
 >>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
+=======
+>>>>>>> d8e20ade9b3d20b57cdc2e0c89210287cafaa26e
 *********************************************************************/
 
 

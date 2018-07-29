@@ -29,7 +29,6 @@ void Critter::removeCritter(){
     space->removeCritter();
     space = nullptr;
 }
-<<<<<<< HEAD
 
 Space *Critter::getNewSpace(int direction){
     if (space != nullptr) {
@@ -64,6 +63,3 @@ Space *Critter::getNewSpace(int direction){
         return nullptr;
     }
 }
-
-=======
->>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f

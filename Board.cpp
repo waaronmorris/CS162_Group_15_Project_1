@@ -56,12 +56,12 @@ void Board::GetEmptySpaces(Position* empty, int& count)
 void Board::setBoard(int r, int c, int ants, int doodlebugs) {
     critterCount["Ant"] = 0; // Set to "ants"??? - Ibrahim
     critterCount["Doodlebug"] = 0; // Set to "doodlebugs"??? - Ibrahim
-
+	
     rows = r;
     columns = c;
     spaces = new Space **[rows];
 
-    for (int i = 0; i<rows; i++){
+    for (int i = 0; i < rows; i++){
         spaces[i] = new Space *[columns];
 		
         for (int j = 0; j<columns; j++){
@@ -135,8 +135,8 @@ void Board::runBoard() {
     for (int i = 0; i < critterCount["Ant"]; i++){
         critters["Ant"][i]->move();
 		
-        //std::cout << "********\nANT MOVE\n********" << std::endl;
-        //printBoard();
+        std::cout << "********\nANT MOVE\n********" << std::endl;
+        printBoard();
     }
 
     /*
@@ -155,8 +155,8 @@ void Board::runBoard() {
 
      */
     //Prints out the results of the Board.
-    printBoard();
     std::cout << "********\nTime Step Complete\n********" << std::endl;
+    printBoard();
 }
 
 Space *Board::getSpace(int r, int c) {

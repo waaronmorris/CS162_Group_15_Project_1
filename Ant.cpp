@@ -70,7 +70,6 @@ void Ant::breed() {
     if (newSpace != nullptr){
         space->getBoard()->createCritter("Ant", newSpace->getPosition().x, newSpace->getPosition().y);
     }
-	
 	/* Old Code???
     //Use the board generate method to create a new Critter.
     space->getBoard()->createCritter("Ant", 0, 0);

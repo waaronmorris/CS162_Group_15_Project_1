@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 TARGET := Doodlebug_Group_Project
 CFLAGS := -std=c++11
 HEADERS := $(wildcard *.hpp)
@@ -49,3 +50,55 @@ clean:
 	rm *.o sim
 
 >>>>>>> 37572b50b943df1d58b254d35c1649e57240cb8f
+=======
+### Adapted make file from: 
+### 	@author - Harlan James <waldroha@oregonstate.edu
+### Author: Tres Oelze
+### Date: 7.26.18
+
+PROJ = Doodlebug
+
+$(CXX) = g++
+
+SRC = main.cpp
+SRC += Ant.cpp
+SRC += Board.cpp
+SRC += Critter.cpp
+SRC += DoodleBug.cpp
+SRC += menu.cpp
+SRC += menu_item.cpp
+SRC += my_lib.cpp
+SRC += Space.cpp
+
+OBJ = $(SRC:.cpp=.o)
+
+BIN = $(PROJ).bin
+
+CFLAGS = -Wall -pedantic -std=gnu++11
+
+VOPT = --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes
+
+.PHONY: default debug clean zip
+
+default: clean $(BIN) debug
+
+debug: $(BIN)
+	@valgrind $(VOPT) ./$(BIN)
+
+$(BIN): $(OBJ)
+	@echo "CC	$@"
+	@$(CXX) $(CFLAGS) $^ -o $@
+
+%.o: %.cpp
+	@echo "CC	$^"
+	@$(CXX) $(CFLAGS) -c $^
+
+zip: 
+	zip $(PROJ).zip *.cpp *.hpp makefile
+
+clean: $(CLEAN)
+	@echo "RM	*.o"
+	@echo "RM	$(BIN)"
+	@rm -f *.o $(BIN)
+
+>>>>>>> d8e20ade9b3d20b57cdc2e0c89210287cafaa26e
