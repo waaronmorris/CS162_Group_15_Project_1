@@ -2,16 +2,15 @@
 ** Program name:
 ** Author:
 ** Date:
-** Description: Implementation for Langston Board.
+** Description: 
 *********************************************************************/
 
+#include <iostream>
 #include <string>
 #include "Board.h"
 #include "Ant.h"
 #include "DoodleBug.h"
 #include "Space.h"
-
-#include <iostream>
 
 void Board::printBoard() {
     for (int i = 0; i<rows; i++){
@@ -34,7 +33,7 @@ void Board::GetEmptySpaces(Position* empty, int& count)
 	for (int i = 0; i < rows; i++)
 		for (int j = 0; j < columns; j++)
 		{
-			string symbol = board[i][j]->getSpace(i, j)->getCritter().getSymbol();
+			std::string symbol = spaces[i][j]->getCritter()->getSymbol();
 			
 			if (symbol != "X" && symbol != "O")
 			{
@@ -47,7 +46,7 @@ void Board::GetEmptySpaces(Position* empty, int& count)
 		}
 	
 	// Removes extra elements from temp
-	empty = new Position*[count];
+	empty = new Position[count];
 	
 	for (int i = 0; i < count; i++)
 		empty[i] = temp[i];
@@ -83,8 +82,8 @@ void Board::setBoard(int r, int c, int ants, int doodlebugs) {
 		
 		int randPos = rand() % count;
 		
-		//board[empty[randPos].x][empty[randPos].y]-> getSpace()->getBoard()-> createCritter("Ant", empty[randPos].x, empty[randPos].y); // I don't get the structure very well - Ibrahim
-		board[empty[randPos].x][empty[randPos].y]->createCritter("Ant", empty[randPos].x, empty[randPos].y); // Which one is right??? - Ibrahim
+		//spaces[empty[randPos].x][empty[randPos].y]->->getBoard()-> createCritter("Ant", empty[randPos].x, empty[randPos].y); // I don't get the structure very well - Ibrahim
+		createCritter("Ant", empty[randPos].x, empty[randPos].y); // Which one is right??? - Ibrahim
 		
 		delete [] empty;
 	}
@@ -98,8 +97,8 @@ void Board::setBoard(int r, int c, int ants, int doodlebugs) {
 		
 		int randPos = rand() % count;
 		
-		//board[empty[randPos].x][empty[randPos].y]-> getSpace()->getBoard()-> createCritter("Doodlebug", empty[randPos].x, empty[randPos].y); // I don't get the structure very well - Ibrahim
-		board[empty[randPos].x][empty[randPos].y]->createCritter("Doodlebug", empty[randPos].x, empty[randPos].y); // Which one is right??? - Ibrahim
+		//spaces[empty[randPos].x][empty[randPos].y]->->getBoard()-> createCritter("Ant", empty[randPos].x, empty[randPos].y); // I don't get the structure very well - Ibrahim
+		createCritter("Doodlebug", empty[randPos].x, empty[randPos].y); // Which one is right??? - Ibrahim
 		
 		delete [] empty;
 	}
