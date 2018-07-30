@@ -99,6 +99,12 @@ Board::~Board() {
         }
         delete [] critters[x.first];
     }
+
+
+    for (int j = 0; j< rows * columns;j++){
+        delete empty[j];
+    }
+    delete []empty;
 }
 
 void Board::runBoard() {
@@ -194,6 +200,8 @@ void Board::resetCritterSlots(std::string type, int loc) {
         tot=i;
     }
     critters[type][tot] = NULL;
+
+
 }
 
 
