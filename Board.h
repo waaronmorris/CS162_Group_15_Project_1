@@ -28,6 +28,7 @@ private:
     Position **empty;
     int emptyCount;
 
+    std::map<std::string, int> critterSlots;
     std::map<std::string, int> critterCount;
     std::map<std::string, Critter **> critters;
 

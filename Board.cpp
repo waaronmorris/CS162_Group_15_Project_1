@@ -172,6 +172,7 @@ void Board::extendCritterSlots(std::string type){
     delete [] critters[type]; // Free the array.
 
     critters[type] = newSlots;
+    critterSlots[type] = slotSize;
 }
 
 void Board::removeCritter(std::string type, Critter *critter) {
@@ -187,15 +188,12 @@ void Board::removeCritter(std::string type, Critter *critter) {
 }
 
 void Board::resetCritterSlots(std::string type, int loc) {
-    int tot=0
+    int tot=0;
     for(int i = loc; i < critterCount[type]; i++) {
         critters[type][i] =  critters[type][i+1];
         tot=i;
     }
-    
-    if (loc != (critterCount[type]-1)){
-        delete critters[type][(critterCount[type]-2)];
-    }
+    critters[type][tot] = NULL;
 }
 
 
