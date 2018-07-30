@@ -219,7 +219,7 @@ string GetString(string);
 
 int StringToInt(string);
 
-int GetInt(string, bool, int, bool, int);
+int GetInt(string = "", bool = false, int = 0, bool = false, int = 0);
 
 bool GetBool(string, string, string);
 
