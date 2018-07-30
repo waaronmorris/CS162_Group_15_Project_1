@@ -26,7 +26,7 @@ private:
     int columns;
     Space ***spaces;
     Position **empty;
-    int emptyCount;
+    int emptyCount=0;
 
     std::map<std::string, int> critterSlots;
     std::map<std::string, int> critterCount;

@@ -25,6 +25,13 @@ void Board::UpdateEmptySpaces() {
     int empties=0;
     Position **temp = new Position *[rows * columns];
 
+
+    if (emptyCount > 0){
+        for (int j = 0; j< (rows * columns);j++){
+            delete empty[j];
+        }
+    }
+
     // Adds empty positions to "temp"
     for (int i = 0; i < rows; i++)
         for (int j = 0; j < columns; j++) {
@@ -32,10 +39,10 @@ void Board::UpdateEmptySpaces() {
                 temp[empties] = new Position();
                 temp[empties]->x = i;
                 temp[empties]->y = j;
-
                 empties++;
             }
         }
+
 
     // Removes extra elements from temp
     for (int i = 0; i < emptyCount; i++){
@@ -48,12 +55,13 @@ void Board::UpdateEmptySpaces() {
 }
 
 void Board::setBoard(int r, int c, int ants, int doodlebugs) {
-
     critterCount["Ant"] = 0;
     critterCount["Doodlebug"] = 0;
 	
     rows = r;
     columns = c;
+
+    empty = new Position *[rows * columns];
     spaces = new Space **[rows];
 
     for (int i = 0; i < rows; i++){
