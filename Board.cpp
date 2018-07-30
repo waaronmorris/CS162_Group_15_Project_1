@@ -204,12 +204,13 @@ void Board::removeCritter(std::string type, Critter *critter) {
 void Board::resetCritterSlots(std::string type, int loc) {
     int tot=0;
     for(int i = loc; i < critterCount[type]; i++) {
-        critters[type][i] =  critters[type][i+1];
-        tot=i;
+        if ((i + 1) < critterCount[type]) {
+            critters[type][i] = critters[type][i + 1];
+        } else {
+            critters[type][i] = NULL;
+        }
+        tot = i;
     }
-    critters[type][tot] = NULL;
-
-
 }
 
 
