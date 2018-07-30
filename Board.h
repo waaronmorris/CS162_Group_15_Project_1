@@ -92,6 +92,8 @@ public:
      * Basic Function to expand the number of Critters on the Board.
      */
     void extendCritterSlots(std::string type);
+    void removeCritter(std::string type, Critter *critter);
+    void resetCritterSlots(std::string type, int loc);
 };
 
 #endif //PROJECT_1_BOARD_H

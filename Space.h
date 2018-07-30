@@ -38,7 +38,7 @@ public:
      * get the board of the space
      * @return A Board
      */
-    Board *getBoard() const;
+    Board *getBoard();
 
     /*!
      * Sets the board for the space.

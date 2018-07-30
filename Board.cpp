@@ -69,16 +69,15 @@ void Board::setBoard(int r, int c, int ants, int doodlebugs) {
 
 	for (int i = 0; i < ants; i++)
 	{
-		int randPos = (rand() % (emptyCount +1));
+		int randPos = (rand() % (emptyCount));
 		createCritter("Ant", empty[randPos]->x, empty[randPos]->y);
 
 	}
 
 	for (int i = 0; i < doodlebugs; i++)
 	{
-		int randPos = (rand() % (emptyCount +1));
-		//spaces[empty[randPos].x][empty[randPos].y]->getBoard()->createCritter("Ant", empty[randPos].x, empty[randPos].y); // I don't get the structure very well - Ibrahim
-		createCritter("Doodlebug", empty[randPos]->x, empty[randPos]->y); // Which one is right??? - Ibrahim
+		int randPos = (rand() % (emptyCount));
+		createCritter("Doodlebug", empty[randPos]->x, empty[randPos]->y);
 
 	}
 }
@@ -173,6 +172,30 @@ void Board::extendCritterSlots(std::string type){
     delete [] critters[type]; // Free the array.
 
     critters[type] = newSlots;
+}
+
+void Board::removeCritter(std::string type, Critter *critter) {
+    int critterLoc = 0;
+    for(int i = 0; i < critterCount[type]; i++) {
+        if (critter == critters[type][i]){
+            critterLoc = i;
+        }
+    }
+    delete critters[type][critterLoc];
+    resetCritterSlots(type, critterLoc);
+    critterCount[type]--;
+}
+
+void Board::resetCritterSlots(std::string type, int loc) {
+    int tot=0
+    for(int i = loc; i < critterCount[type]; i++) {
+        critters[type][i] =  critters[type][i+1];
+        tot=i;
+    }
+    
+    if (loc != (critterCount[type]-1)){
+        delete critters[type][(critterCount[type]-2)];
+    }
 }
 
 

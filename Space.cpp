@@ -54,7 +54,7 @@ Space::~Space() {
     //delete critter;
 }
 
-Board *Space::getBoard() const {
+Board *Space::getBoard(){
     return board;
 }
 

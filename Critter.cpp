@@ -28,10 +28,19 @@ void Critter::setSpace(Space *s) {
 }
 
 void Critter::removeCritter(){
+   Space *oldSpace;
     if (space != NULL){
         space->removeCritter();
     }
-    space = NULL;
+    oldSpace = space;
+    if (symbol=="X"){
+        space->getBoard()->removeCritter("Doodlebug",this);
+    } else {
+        space->getBoard()->removeCritter("Ant", this);
+    }
+
+    oldSpace = NULL;
+
 }
 
 Space *Critter::getNewSpace(int direction){

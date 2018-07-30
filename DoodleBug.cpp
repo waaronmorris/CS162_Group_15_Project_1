@@ -16,6 +16,9 @@ DoodleBug::DoodleBug(Space *s) {
 }
 
 void DoodleBug::move() {
+    int x_size = space->getBoard()->getRows();
+    int y_size = space->getBoard()->getColumns();
+
 	if (space != NULL) {
         int x_move=0;
         int y_move=0;
@@ -37,15 +40,26 @@ void DoodleBug::move() {
                 x_move--;
             }
 
-            Space *newSpace = space->getBoard()->getSpace((location.x + x_move), (location.y + y_move));
-            if (newSpace != NULL) {
-                if (newSpace->getSymbol() == "O") {
-                    Critter *eatenAnt = newSpace->getCritter();
-                    eatenAnt->removeCritter();
-                    setSpace(newSpace);
-                    daysNotEaten = 0;
-                    //std::cout << "***********ANT EATEN************" << std::endl;
-                    return;
+            Space *newSpace = NULL;
+
+            if (((location.x + x_move) < 0) || ((location.y + y_move) < 0)){
+                //Move Off board left or up
+                //std::cout << "Move off Board: Ant did not move" << std::endl;
+            } else if (((location.x + x_move) >= x_size ) || ((location.y + y_move) >= y_size)){
+                //Move Off board right or bottom
+                //std::cout << "Move off Board: Ant did not move" << std::endl;
+            } else {
+                newSpace = space->getBoard()->getSpace((location.x + x_move), (location.y + y_move));
+
+                if (newSpace != NULL){
+                    if (newSpace->getSymbol() == "O") {
+                        Critter *eatenAnt = newSpace->getCritter();
+                        eatenAnt->removeCritter();
+                        setSpace(newSpace);
+                        daysNotEaten = 0;
+                        //std::cout << "***********ANT EATEN************" << std::endl;
+                        return;
+                    }
                 }
             }
         }
@@ -88,6 +102,4 @@ void DoodleBug::starve() {
 }
 
 
-DoodleBug::~DoodleBug() {
-	std::cout << "Destroy Doodlebug";
-}
+DoodleBug::~DoodleBug() {}
