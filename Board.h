@@ -25,13 +25,15 @@ private:
     int rows;
     int columns;
     Space ***spaces;
+    Position **empty;
+    int emptyCount;
 
     std::map<std::string, int> critterCount;
     std::map<std::string, Critter **> critters;
-	
-	Position* GetEmptySpaces(int& count);
 
 public:
+
+    void UpdateEmptySpaces();
     /*!
      *
      * @return int Number of Rows of the Board

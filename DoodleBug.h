@@ -11,6 +11,8 @@
 #include "Ant.h"
 
 class DoodleBug: public Critter{
+private:
+    int daysNotEaten;
 public:
     DoodleBug(Space* s);
     void move();

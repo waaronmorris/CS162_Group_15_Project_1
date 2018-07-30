@@ -162,8 +162,9 @@ int main()
 						gameBoard->setBoard(rows, cols, ants, doodlebugs);
 						
 						// Run Simulation
-                        for (int i = 0; i < iterations; i++)
+                        for (int i = 0; i < iterations; i++){
                             gameBoard->runBoard();
+                        }
 						/**/
 						// End of Simulation
 						delete gameBoard;

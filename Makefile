@@ -21,7 +21,7 @@ OBJ = $(SRC:.cpp=.o)
 
 BIN = $(PROJ).bin
 
-CFLAGS = -Wall -pedantic -std=gnu++11
+CFLAGS = -Wall -pedantic -std=c++11
 
 VOPT = --tool=memcheck --leak-check=full --show-leak-kinds=all --track-origins=yes
 

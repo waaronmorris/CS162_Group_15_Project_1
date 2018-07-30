@@ -9,6 +9,7 @@
 #include "DoodleBug.h"
 
 DoodleBug::DoodleBug(Space *s) {
+    daysNotEaten = 0;
 	symbol = "X";
 	space = s;
 	s->setCritter(this);
@@ -16,86 +17,74 @@ DoodleBug::DoodleBug(Space *s) {
 
 void DoodleBug::move() {
 	if (space != NULL) {
+        int x_move=0;
+        int y_move=0;
+        int dir=0;
+
 		Position location = space->getPosition();
 
-		int dir = (rand() % 4);
-		Space *checkDown = space->getBoard()->getSpace((location.x), (location.y - 1));
-		Space *checkRight = space->getBoard()->getSpace((location.x + 1), (location.y));
-		Space *checkUp = space->getBoard()->getSpace((location.x), (location.y + 1));
-		Space *checkLeft = space->getBoard()->getSpace((location.x - 1), (location.y));
-		if (checkUp->getSymbol() == "O") {
-			std::cout << "***********ANT EATEN(ABOVE)************" << std::endl;
-			dir = 0;
-			Space *newSpace = getNewSpace(dir);
-			Critter *eatenAnt = newSpace->getCritter();
-			eatenAnt->removeCritter();
-			setSpace(newSpace);
-		}
-		else if (checkRight->getSymbol() == "O") {
-			dir = 1;
-			Space *newSpace = getNewSpace(dir);
-			Critter *eatenAnt = newSpace->getCritter();
-			eatenAnt->removeCritter();
-			setSpace(newSpace);
-			std::cout << "***********ANT EATEN(RIGHT)************" << std::endl;
-		}
-		else if (checkDown->getSymbol() == "O") {
-			dir = 2;
-			Space *newSpace = getNewSpace(dir);
-			Critter *eatenAnt = newSpace->getCritter();
-			eatenAnt->removeCritter();
-			setSpace(newSpace);
-			std::cout << "***********ANT EATEN(BELOW)************" << std::endl;
-		}
-		else if (checkLeft->getSymbol() == "O") {
-			dir = 3;
-			Space *newSpace = getNewSpace(dir);
-			Critter *eatenAnt = newSpace->getCritter();
-			eatenAnt->removeCritter();
-			setSpace(newSpace);
-			std::cout << "***********ANT EATEN(LEFT)************" << std::endl;
-		}
-		else {
-			int direction = (rand() % 4);
+		for (int h =0; h<4; h++ ){
+            x_move=0;
+            y_move=0;
 
-			Space *newSpace = getNewSpace(direction);
-			if (newSpace != NULL) {
-				if (!newSpace->isOccupied()) {
-					setSpace(newSpace);
-				}
-			}
+            if (h < 1){
+                y_move++;
+            }else if (h < 2){
+                x_move++;
+            }else if (h < 3){
+                y_move--;
+            }else if (h < 4){
+                x_move--;
+            }
+
+            Space *newSpace = space->getBoard()->getSpace((location.x + x_move), (location.y + y_move));
+            if (newSpace != NULL) {
+                if (newSpace->getSymbol() == "O") {
+                    Critter *eatenAnt = newSpace->getCritter();
+                    eatenAnt->removeCritter();
+                    setSpace(newSpace);
+                    daysNotEaten = 0;
+                    //std::cout << "***********ANT EATEN************" << std::endl;
+                    return;
+                }
+            }
+        }
+
+		int direction = (rand() % 4);
+		Space *newSpace = getNewSpace(direction);
+		if (newSpace != NULL) {
+		    if (!newSpace->isOccupied()) {
+		        setSpace(newSpace);
+		        daysNotEaten++;
+		    }
 		}
 	}
 }
 
 void DoodleBug::breed() {
-	/*
 	//Use the board generate method to creat a new Critter.
 	Space *newSpace;
+
 	bool validSpace = false;
 	int direction = 0;
+
 	do {
-	newSpace = getNewSpace(direction);
-	direction++;
-	if (newSpace != NULL || direction >= 3) {
-	validSpace = true;
-	}
+		newSpace = getNewSpace(direction);
+		direction++;
+		if (newSpace != NULL || direction >= 3) {
+			validSpace = true;
+		}
 	} while (!validSpace);
 
 	if (newSpace != NULL) {
-	space->getBoard()->createCritter("Doodlebug", newSpace->getPosition().x, newSpace->getPosition().y);
+		space->getBoard()->createCritter("Doodlebug", newSpace->getPosition().x, newSpace->getPosition().y);
 	}
-	*/
 }
 
 void DoodleBug::starve() {
-	//removeCritter();
-	std::cout << "Need to implement";
-}
-
-void DoodleBug::eatAnt(Ant* eatenAnt)
-{
-	std::cout << "Need to implemenet";
+    if (daysNotEaten >=3){
+        removeCritter();
+    }
 }
 
 

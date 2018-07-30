@@ -34,7 +34,9 @@ void Space::setCritter(Critter *movedCritter){
 }
 
 void Space::removeCritter(){
-    critter = NULL;
+    if (critter != NULL){
+        critter = NULL;
+    }
 }
 
 Position Space::getPosition() {

@@ -15,8 +15,7 @@ const std::string Critter::getSymbol() {
     return symbol;
 }
 
-void Critter::starve(){
-}
+void Critter::starve(){}
 
 Space *Critter::getSpace() const {
     return space;
@@ -29,7 +28,9 @@ void Critter::setSpace(Space *s) {
 }
 
 void Critter::removeCritter(){
-    space->removeCritter();
+    if (space != NULL){
+        space->removeCritter();
+    }
     space = NULL;
 }
 

@@ -21,38 +21,36 @@ void Board::printBoard() {
     }
 }
 
-Position* Board::GetEmptySpaces(int& count)
-{
-	Position* temp = new Position[rows * columns];
-	
-	// Adds empty positions to "temp"
-	for (int i = 0; i < rows; i++)
-		for (int j = 0; j < columns; j++)
-		{
-			if (!spaces[i][j]->isOccupied())
-			{
-				Position p;
-				p.x = i;
-				p.y = j;
-				
-				temp[count] = p;
-                count++;
-			}
-		}
-	
-	// Removes extra elements from temp
-	Position* empty = new Position[count];
-	std::cout << "\n\ncount: " << count << "\n\n";
-	for (int i = 0; i < count; i++)
-		empty[i] = temp[i];
-	
-	delete [] temp;
-	return empty;
+void Board::UpdateEmptySpaces() {
+    int empties=0;
+    Position **temp = new Position *[rows * columns];
+
+    // Adds empty positions to "temp"
+    for (int i = 0; i < rows; i++)
+        for (int j = 0; j < columns; j++) {
+            if (!spaces[i][j]->isOccupied()) {
+                temp[empties] = new Position();
+                temp[empties]->x = i;
+                temp[empties]->y = j;
+
+                empties++;
+            }
+        }
+
+    // Removes extra elements from temp
+    for (int i = 0; i < emptyCount; i++){
+        empty[i] = temp[i];
+    }
+
+    delete[] empty;
+    empty = temp;
+    emptyCount = empties;
 }
 
 void Board::setBoard(int r, int c, int ants, int doodlebugs) {
-    critterCount["Ant"] = 0; // ERROR: Set to "ants"??? - Ibrahim
-    critterCount["Doodlebug"] = 0; // ERROR: Set to "doodlebugs"??? - Ibrahim
+
+    critterCount["Ant"] = 0;
+    critterCount["Doodlebug"] = 0;
 	
     rows = r;
     columns = c;
@@ -66,35 +64,23 @@ void Board::setBoard(int r, int c, int ants, int doodlebugs) {
             spaces[i][j]->setSpace(j, i, this);
         }
     }
-	
-    // Initialize all Critters at Random Locations
-	// Ants
+
+    UpdateEmptySpaces();
+
 	for (int i = 0; i < ants; i++)
 	{
-		int count = 0;
-		Position* empty = GetEmptySpaces(count);
-		
-		int randPos = rand() % count;
-		
-		createCritter("Ant", empty[randPos].x, empty[randPos].y);
-		
-		delete [] empty;/**/
+		int randPos = (rand() % (emptyCount +1));
+		createCritter("Ant", empty[randPos]->x, empty[randPos]->y);
+
 	}
-	// Doodlebugs - ERROR: doodlebugs don't seem to get added to the board
+
 	for (int i = 0; i < doodlebugs; i++)
 	{
-		int count = 0;
-		Position* empty = GetEmptySpaces(count);
-		
-		int randPos = rand() % count;
-		
+		int randPos = (rand() % (emptyCount +1));
 		//spaces[empty[randPos].x][empty[randPos].y]->getBoard()->createCritter("Ant", empty[randPos].x, empty[randPos].y); // I don't get the structure very well - Ibrahim
-		createCritter("Doodlebug", empty[randPos].x, empty[randPos].y); // Which one is right??? - Ibrahim
-		
-		delete [] empty;
+		createCritter("Doodlebug", empty[randPos]->x, empty[randPos]->y); // Which one is right??? - Ibrahim
+
 	}
-	
-    // Incorporate map members??? I don't know how to use them - Ibrahim
 }
 
 Board::~Board() {
@@ -133,10 +119,14 @@ void Board::runBoard() {
     }
 
     //Breed DoodleBugs
-
+    int db_count = critterCount["Doodlebug"];
+    for (int i = 0; i < db_count; i++){
+        critters["Doodlebug"][i]->breed();
+    }
 
     //Breed Ants
-    for (int i = 0; i < critterCount["Ant"]; i++){
+    int ant_count = critterCount["Ant"];
+    for (int i = 0; i < ant_count; i++){
         critters["Ant"][i]->breed();
     }
 
@@ -145,7 +135,11 @@ void Board::runBoard() {
 }
 
 Space *Board::getSpace(int r, int c) {
-    return spaces[r][c];
+    if(r >= 0 && r<rows && c >= 0 && c<columns){
+        if (spaces[r][c] != NULL){
+            return spaces[r][c];
+        }
+    }
 }
 
 int Board::getRows() const {
@@ -161,10 +155,11 @@ void Board::createCritter(std::string type, int x_start, int y_start) {
     if(type == "Ant"){
         critters[type][critterCount[type]] = new Ant(spaces[x_start][y_start]);
     } else if ( type == "Doodlebug"){
-        //critters[type][critterCount[type]] = new DoodleBug(spaces[x_start][y_start]);
+        critters[type][critterCount[type]] = new DoodleBug(spaces[x_start][y_start]);
     }
 
     critterCount[type]++;
+    UpdateEmptySpaces();
 }
 
 void Board::extendCritterSlots(std::string type){
