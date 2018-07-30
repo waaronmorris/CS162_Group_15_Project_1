@@ -1,8 +1,8 @@
 /*********************************************************************
-** Program name: Doodlebug Clasee
+** Program name: Doodlebug Class
 ** Author: Group 15
-** Date:
-** Description: A class for doodblebug
+** Date: 7/29/18
+** Description: A class for Doodlebug
 *********************************************************************/
 
 #include <iostream>

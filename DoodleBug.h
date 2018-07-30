@@ -1,8 +1,8 @@
 /*********************************************************************
 ** Program name: Doodlebug Class
 ** Author: Group 15
-** Date:
-** Description: A class for doodblebug
+** Date: 7/29/18
+** Description: A class for Doodlebug
 *********************************************************************/
 #ifndef PROJECT_DOODLEBUG_H
 #define PROJECT_DOODLEBUG_H
