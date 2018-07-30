@@ -27,7 +27,7 @@ void Board::UpdateEmptySpaces() {
 
 
     if (emptyCount > 0){
-        for (int j = 0; j< (rows * columns);j++){
+        for (int j = 0; j< emptyCount;j++){
             delete empty[j];
         }
     }
