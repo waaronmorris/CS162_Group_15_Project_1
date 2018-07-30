@@ -109,7 +109,7 @@ Board::~Board() {
     }
 
 
-    for (int j = 0; j< rows * columns;j++){
+    for (int j = 0; j< emptyCount; j++){
         delete empty[j];
     }
     delete []empty;
