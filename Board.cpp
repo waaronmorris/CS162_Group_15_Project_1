@@ -1,8 +1,8 @@
 /*********************************************************************
-** Program name:
-** Author:
+** Program name: Board Class
+** Author: Group 15
 ** Date:
-** Description: 
+** Description: A class for the Board
 *********************************************************************/
 
 #include <iostream>

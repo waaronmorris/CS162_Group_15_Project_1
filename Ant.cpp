@@ -1,8 +1,8 @@
 /*********************************************************************
-** Program name:
-** Author:
+** Program name: Ant Class
+** Author: Group 15
 ** Date:
-** Description:
+** Description: A class for Ants
 *********************************************************************/
 
 #include "Ant.h"

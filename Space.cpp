@@ -1,8 +1,8 @@
 /*********************************************************************
-** Program name: 
-** Author:
+** Program name: Space Class
+** Author: Group 15
 ** Date:
-** Description: 
+** Description: A class for Space
 *********************************************************************/
 
 #include "Space.h"

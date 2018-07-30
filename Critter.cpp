@@ -1,8 +1,8 @@
 /*********************************************************************
-** Program name:
-** Author:
+** Program name: Critter Class
+** Author: Group 15
 ** Date:
-** Description:
+** Description: A base class for Critters
 *********************************************************************/
 
 #include <iostream>
